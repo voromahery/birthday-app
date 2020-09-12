@@ -14,6 +14,8 @@ The app will show the list of people, sorted by the ones who will have their bir
 
 ![assets/Screenshot_2020-09-12_at_16.57.18.png](assets/Screenshot_2020-09-12_at_16.57.18.png)
 
+The screenshot is just an example of a possible layout. Feel free to create a custom layout with boostrap if you want to.
+
 The users will be able to add a new element on the list (only on the app list localstorage, not on the json). Here are the fields :
 
 -   first name
@@ -31,5 +33,10 @@ Every action should be persisted into the local storage.
 Here is the package you should use for handling date computations. Add it as a dependency of your project
 
 [https://date-fns.org/v1.29.0/docs/differenceInYears](https://date-fns.org/v1.29.0/docs/differenceInYears)
+
+Again, try to make a plan, by dividing big tasks into smaller ones.
+You have the whole week to work on it. You can collaborate with other students, but copy/pasting code is forbidden.
+Once you're finished with the functionality, try to make your app more appealing with css and other tricks.
+Be creative 🎨
 
 Good Luck
