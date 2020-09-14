@@ -18,16 +18,19 @@ async function addData(resource) {
     // Sort the date by those who have birthday sooner
     const sortBirthdate = await resource.sort((a, b) => a.birthday - b.birthday);
     // Create an html
-    const html = await sortBirthdate.map(person => `
+    const html = await sortBirthdate.map(person =>  `
 			  <tr>
-				<td>${person.picture}</td>
+                <td>
+                <img src="${person.picture}" alt="person-avatar">
+                </td>
 				<td>${person.firstName}</td>
 				<td>${person.birthday}</td>
                 <td>
                     <button>Edit</button>
                 </td>
                 <td>
-                    <button>Delete</button></td>
+                    <button class="delete" id=${person.id}>Delete</button>
+                </td>
 			  </tr>
     `).join('');
     // Insert it into the DOM
@@ -36,6 +39,20 @@ async function addData(resource) {
 
 
 // Delete icon
+async function deletePers(e) {
+    const deleteButton = await e.target.closest('.delete');
+    if (deleteButton) {
+        const buttonId = deleteButton.id;
+        console.log(buttonId);
+    }
+}
+
+async function deleteId(id) {
+    const personId = await resource.find(person => person.id === id);
+}
+
+window.addEventListener('click', deletePers);
+
 // Grab the delete icon
 
 // create an html
