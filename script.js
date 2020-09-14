@@ -1,5 +1,3 @@
-// const { async } = require("regenerator-runtime");
-
 // Grab all necessary elements and files
 const myData = "./people.json";
 const table = document.querySelector('tbody');
@@ -12,13 +10,13 @@ async function fetchData() {
     addData(resource);
     return resource;
 }
- fetchData();
+fetchData();
 
 async function addData(resource) {
     // Sort the date by those who have birthday sooner
     const sortBirthdate = await resource.sort((a, b) => a.birthday - b.birthday);
     // Create an html
-    const html = await sortBirthdate.map(person =>  `
+    const html = await sortBirthdate.map(person => `
 			  <tr>
                 <td>
                 <img src="${person.picture}" alt="person-avatar" class="rounded-circle">
@@ -48,22 +46,55 @@ async function deletePers(e) {
     }
 }
 
+// Remove popup
+async function removeDeletePopup(container) {
+    container.classList.remove('open');
+    // Delete the popup right after
+    container.remove();
+    // Remove it from javascript memory
+    container = null;
+}
+
 async function deleteId(id) {
+    let response = await fetch(myData);
+    let resource = await response.json(myData);
+    const findPers = resource.find(person => person.id === id);
     // Create an element to insert the card
-const container = document.createElement('div');
-container.classList.add('container');
-const html = `
+    const container = document.createElement('div');
+    container.classList.add('container');
+    const html = `
         <div class="card">
-            <h3>Are you sure that you want to delete?</h3>
+            <h3>Are you sure that you want to delete <i>${findPers.firstName}</i>?</h3>
         <div>
             <button class="delete-confirm">Yes</button>
             <button class="undelete">No</button>
         </div>
         `;
-container.innerHTML= html;
-// Add to the body
-document.body.appendChild(container);
-container.classList.add('open');
+    container.innerHTML = html;
+    // Add to the body
+    document.body.appendChild(container);
+    container.classList.add('open');
+
+    async function deleteConfirmation(e) {
+        // If yes is clicked.
+        const confirmButton = e.target.matches('.delete-confirm');
+        if (confirmButton) {
+            console.log('jhdajkf');
+            const personId = await resource.filter(person => person.id !== id);
+            resource = personId;
+            console.log(personId);
+            addData(personId);
+            removeDeletePopup(container);
+        }
+
+        // If no and the empty space are clicked
+        const cancelButton = e.target.matches('.undelete');
+        if (cancelButton || container) {
+            console.log('ashjdkgdj');
+            removeDeletePopup(container);
+        }
+    }
+    window.addEventListener('click', deleteConfirmation);
 }
 
 window.addEventListener('click', deletePers);
