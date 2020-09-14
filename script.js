@@ -1,18 +1,18 @@
 // const { async } = require("regenerator-runtime");
 
-// Grab all necessary elements
+// Grab all necessary elements and files
 const myData = "./people.json";
 const table = document.querySelector('tbody');
+
 // Fetch the data
 async function fetchData() {
-    const response = await fetch(myData);
+    let response = await fetch(myData);
     // Convert the string into an object 
-    const resource = await response.json(myData);
-    console.log(resource);
+    let resource = await response.json(myData);
     addData(resource);
     return resource;
 }
-fetchData();
+ fetchData();
 
 async function addData(resource) {
     // Sort the date by those who have birthday sooner
@@ -21,15 +21,15 @@ async function addData(resource) {
     const html = await sortBirthdate.map(person =>  `
 			  <tr>
                 <td>
-                <img src="${person.picture}" alt="person-avatar">
+                <img src="${person.picture}" alt="person-avatar" class="rounded-circle">
                 </td>
 				<td>${person.firstName}</td>
 				<td>${person.birthday}</td>
                 <td>
-                    <button>Edit</button>
+                    <button class="edit rounded-sm" id=${person.id}>Edit</button>
                 </td>
                 <td>
-                    <button class="delete" id=${person.id}>Delete</button>
+                    <button class="delete rounded-sm" id=${person.id}>Delete</button>
                 </td>
 			  </tr>
     `).join('');
@@ -40,20 +40,33 @@ async function addData(resource) {
 
 // Delete icon
 async function deletePers(e) {
+    // Grab the delete icon
     const deleteButton = await e.target.closest('.delete');
     if (deleteButton) {
         const buttonId = deleteButton.id;
-        console.log(buttonId);
+        deleteId(buttonId);
     }
 }
 
 async function deleteId(id) {
-    const personId = await resource.find(person => person.id === id);
+    // Create an element to insert the card
+const container = document.createElement('div');
+container.classList.add('container');
+const html = `
+        <div class="card">
+            <h3>Are you sure that you want to delete?</h3>
+        <div>
+            <button class="delete-confirm">Yes</button>
+            <button class="undelete">No</button>
+        </div>
+        `;
+container.innerHTML= html;
+// Add to the body
+document.body.appendChild(container);
+container.classList.add('open');
 }
 
 window.addEventListener('click', deletePers);
-
-// Grab the delete icon
 
 // create an html
 
