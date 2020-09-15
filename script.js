@@ -74,33 +74,32 @@ async function editPopup(id) {
     const form = document.createElement('form');
     form.classList.add('edit-form');
     const formHtml = `
-        <fieldset class="edit-field">
-			<label for="first-name">First name
-				<input type="text" name="first-name" id="firstname" value="">
-			</label>
-			<label for="last-name">Last name
-				<input type="text" name="last-name" id="lastname" value="">
-			</label>
-			<label for="birthday">Birthday
-				<input type="text" name="birthday" id="birthday" value="">
-			</label>
-			<label for="avatar">Avatar
-				<input type="url" name="avatar" id="avatar" value="">
-			</label>
-			<div class="buttons">
-				<button class="save">Save</button>
-				<button class="cancel">cancel</button>
-			</div>
-		</fieldset>
+    <fieldset class="edit-field">
+        <label for="first-name">First name
+            <input type="text" name="first-name" id="firstname" value="${findPers.firstName}">
+        </label>
+        <label for="last-name">Last name
+            <input type="text" name="last-name" id="lastname" value="${findPers.lastName}">
+        </label>
+        <label for="birthday">Birthday
+            <input type="text" name="birthday" id="birthday" value="${findPers.birthday}">
+        </label>
+        <label for="picture">Picture
+            <input type="url" name="picture" id="picture" value="${findPers.picture}">
+        </label>
+        <div class="buttons">
+            <button class="save">Save</button>
+            <button class="cancel">cancel</button>
+        </div>
+    </fieldset>
     `;
     form.innerHTML = formHtml;
 
     // If save is clicked
-    form.addEventListener('submit', e => {
+    form.addEventListener('click', e => {
         const formData = e.currentTarget;
         console.log(formData);
         console.log('jhadf');
-        debugger;
         removeEditPopup(form);
         e.preventDefault();
     });
@@ -185,6 +184,7 @@ async function deleteId(id) {
     window.addEventListener('click', deleteConfirmation);
 }
 
+// Event listener
 window.addEventListener('click', deletePers);
 window.addEventListener('click', editPers);
 // create an html
