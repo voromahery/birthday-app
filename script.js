@@ -1,7 +1,6 @@
 // Grab all necessary elements and files
 const myData = "./people.json";
 const table = document.querySelector('tbody');
-
 // Fetch the data
 async function fetchData() {
     const response = await fetch(myData);
@@ -16,11 +15,32 @@ async function fetchData() {
         };
     });
     addData(resource);
+    table.dispatchEvent(new CustomEvent('updateList'));
     return resource;
 }
 
-
 fetchData();
+
+// Add to local storage
+async function addToLocalStorage() {
+    const response = await fetch(myData);
+    const resource = await response.json(myData);
+    localStorage.setItem('resource', JSON.stringify(resource));
+};
+
+// Even if the page is refreshed, our object is stil there.
+async function restoreData() {
+    const response = await fetch(myData);
+    let resource = await response.json(myData);
+    // changes a string into an object.
+    const people = JSON.parse(localStorage.getItem('resource'));
+    // Check if there is something in the local storage
+    if (people) {
+        resource = people;
+    }
+
+    table.dispatchEvent(new CustomEvent('updateList'));
+}
 
 async function addData(resource) {
     // Sort the date by those who have birthday sooner
@@ -61,6 +81,7 @@ async function editPers(e) {
     if (editButton) {
         const buttonId = editButton.id;
         editPopup(buttonId);
+        table.dispatchEvent(new CustomEvent('updateList'));
     }
 }
 
@@ -69,7 +90,6 @@ async function editPopup(id) {
     const response = await fetch(myData);
     const resource = await response.json(myData);
     const findPers = resource.find(person => person.id === id);
-
     // Create an element to store an html
     const form = document.createElement('form');
     form.classList.add('edit-form');
@@ -88,20 +108,27 @@ async function editPopup(id) {
             <input type="url" name="picture" id="picture" value="${findPers.picture}">
         </label>
         <div class="buttons">
-            <button class="save">Save</button>
-            <button class="cancel">cancel</button>
+            <button class="save" type="submit">Save</button>
+            <button class="cancel" type="button">cancel</button>
         </div>
     </fieldset>
     `;
     form.innerHTML = formHtml;
 
     // If save is clicked
-    form.addEventListener('click', e => {
+    form.addEventListener('submit', () => {
         const formData = e.currentTarget;
         console.log(formData);
         console.log('jhadf');
         removeEditPopup(form);
         e.preventDefault();
+
+        findPers.lastName = formData.value;
+        findPers.firstName = formData.value;
+        findPers.picture = formData.picture;
+        findPers.birthday = formData.birthday;
+        findPers.id = Date.now();
+        table.dispatchEvent(new CustomEvent('updateList'));
     });
 
     // If the empty space or the cancel button is clicked
@@ -112,6 +139,7 @@ async function editPopup(id) {
         if (cancel || removeForm) {
             console.log('jshjkfhj');
             removeEditPopup(form);
+            table.dispatchEvent(new CustomEvent('updateList'));
         }
     });
 
@@ -127,6 +155,7 @@ async function deletePers(e) {
     if (deleteButton) {
         const buttonId = deleteButton.id;
         deleteId(buttonId);
+        table.dispatchEvent(new CustomEvent('updateList'));
     }
 }
 
@@ -169,6 +198,7 @@ async function deleteId(id) {
             console.log('personId', personId);
             addData(personId);
             removeDeletePopup(container);
+            table.dispatchEvent(new CustomEvent('updateList'));
         }
 
         // If no and the empty space are clicked
@@ -177,6 +207,7 @@ async function deleteId(id) {
         if (cancelButton || remove) {
             console.log('cancelButton');
             removeDeletePopup(container);
+            table.dispatchEvent(new CustomEvent('updateList'));
         }
     }
 
@@ -187,6 +218,6 @@ async function deleteId(id) {
 // Event listener
 window.addEventListener('click', deletePers);
 window.addEventListener('click', editPers);
-// create an html
-
-// Insert the html to the DOM
+table.addEventListener('updateList', addToLocalStorage);
+window.addEventListener('updateList', addToLocalStorage);
+restoreData();
