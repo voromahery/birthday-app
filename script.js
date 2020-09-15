@@ -4,12 +4,22 @@ const table = document.querySelector('tbody');
 
 // Fetch the data
 async function fetchData() {
-    let response = await fetch(myData);
+    const response = await fetch(myData);
     // Convert the string into an object 
-    let resource = await response.json(myData);
+    const resource = await response.json(myData);
+    let persons = Array.from({ length: 10 }, () => {
+        return {
+            firstName: resource.firstName,
+            picture: resource.picture,
+            birthday: resource.birthday,
+            id: resource.id
+        };
+    });
     addData(resource);
     return resource;
 }
+
+
 fetchData();
 
 async function addData(resource) {
@@ -24,10 +34,10 @@ async function addData(resource) {
 				<td>${person.firstName}</td>
 				<td>${person.birthday}</td>
                 <td>
-                    <button class="edit rounded-sm" id=${person.id}>Edit</button>
+                    <button class="edit" id=${person.id}>Edit</button>
                 </td>
                 <td>
-                    <button class="delete rounded-sm" id=${person.id}>Delete</button>
+                    <button class="delete" id=${person.id}>Delete</button>
                 </td>
 			  </tr>
     `).join('');
@@ -35,10 +45,85 @@ async function addData(resource) {
     table.innerHTML = html;
 }
 
+// Remove popup
+async function removeEditPopup(form) {
+    form.classList.remove('open');
+    // Delete the popup right after
+    form.remove();
+    // Remove it from javascript memory
+    form = null;
+}
+
+// Edit person 
+async function editPers(e) {
+    // Grab the edit button
+    const editButton = e.target.closest('.edit');
+    if (editButton) {
+        const buttonId = editButton.id;
+        editPopup(buttonId);
+    }
+}
+
+
+async function editPopup(id) {
+    const response = await fetch(myData);
+    const resource = await response.json(myData);
+    const findPers = resource.find(person => person.id === id);
+
+    // Create an element to store an html
+    const form = document.createElement('form');
+    form.classList.add('edit-form');
+    const formHtml = `
+        <fieldset class="edit-field">
+			<label for="first-name">First name
+				<input type="text" name="first-name" id="firstname" value="">
+			</label>
+			<label for="last-name">Last name
+				<input type="text" name="last-name" id="lastname" value="">
+			</label>
+			<label for="birthday">Birthday
+				<input type="text" name="birthday" id="birthday" value="">
+			</label>
+			<label for="avatar">Avatar
+				<input type="url" name="avatar" id="avatar" value="">
+			</label>
+			<div class="buttons">
+				<button class="save">Save</button>
+				<button class="cancel">cancel</button>
+			</div>
+		</fieldset>
+    `;
+    form.innerHTML = formHtml;
+
+    // If save is clicked
+    form.addEventListener('submit', e => {
+        const formData = e.currentTarget;
+        console.log(formData);
+        console.log('jhadf');
+        debugger;
+        removeEditPopup(form);
+        e.preventDefault();
+    });
+
+    // If the empty space or the cancel button is clicked
+    window.addEventListener('click', e => {
+        e.preventDefault();
+        const removeForm = e.target.matches('.edit-form');
+        const cancel = e.target.closest('.cancel');
+        if (cancel || removeForm) {
+            console.log('jshjkfhj');
+            removeEditPopup(form);
+        }
+    });
+
+    // Add to the body
+    document.body.appendChild(form);
+    form.classList.add('open');
+}
 
 // Delete icon
 async function deletePers(e) {
-    // Grab the delete icon
+    // Grab the delete button
     const deleteButton = await e.target.closest('.delete');
     if (deleteButton) {
         const buttonId = deleteButton.id;
@@ -56,15 +141,15 @@ async function removeDeletePopup(container) {
 }
 
 async function deleteId(id) {
-    let response = await fetch(myData);
-    let resource = await response.json(myData);
+    const response = await fetch(myData);
+    const resource = await response.json(myData);
     const findPers = resource.find(person => person.id === id);
     // Create an element to insert the card
     const container = document.createElement('div');
     container.classList.add('container');
     const html = `
         <div class="card">
-            <h3>Are you sure that you want to delete <i>${findPers.firstName}</i>?</h3>
+            <h3>Are you sure that you want to delete ${findPers.firstName}?</h3>
         <div>
             <button class="delete-confirm">Yes</button>
             <button class="undelete">No</button>
@@ -76,29 +161,32 @@ async function deleteId(id) {
     container.classList.add('open');
 
     async function deleteConfirmation(e) {
+
         // If yes is clicked.
         const confirmButton = e.target.matches('.delete-confirm');
         if (confirmButton) {
-            console.log('jhdajkf');
             const personId = await resource.filter(person => person.id !== id);
-            resource = personId;
-            console.log(personId);
+            persons = personId;
+            console.log('personId', personId);
             addData(personId);
             removeDeletePopup(container);
         }
 
         // If no and the empty space are clicked
+        const remove = e.target.matches('.container');
         const cancelButton = e.target.matches('.undelete');
-        if (cancelButton || container) {
-            console.log('ashjdkgdj');
+        if (cancelButton || remove) {
+            console.log('cancelButton');
             removeDeletePopup(container);
         }
     }
+
+    // Event for the button Yes and No
     window.addEventListener('click', deleteConfirmation);
 }
 
 window.addEventListener('click', deletePers);
-
+window.addEventListener('click', editPers);
 // create an html
 
 // Insert the html to the DOM
