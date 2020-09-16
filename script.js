@@ -44,11 +44,11 @@ async function restoreData() {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 async function addData(personData) {
-//      let result = differenceInYears(
-//          new Date('2020, 09, 15'),
-//          new Date('2020, 12, 31')
-//        );
-//  console.log(result);
+    //      let result = differenceInYears(
+    //          new Date('2020, 09, 15'),
+    //          new Date('2020, 12, 31')
+    //        );
+    //  console.log(result);
     // Sort the date by those who have birthday sooner
     const sortBirthdate = await personData.sort((a, b) => a.birthday - b.birthday);
     // Create an html
@@ -279,7 +279,7 @@ addButton.addEventListener('click', e => {
             <input type="url" name="picture" id="picture">
         </label>
         <div class="buttons">
-            <button class="add" type="submit">Save</button>
+            <button class="add save" type="submit">Save</button>
             <button class="cancel-add" type="button">cancel</button>
         </div>
     </fieldset>
@@ -291,31 +291,46 @@ addButton.addEventListener('click', e => {
 
     newForm.addEventListener('submit', e => {
         e.preventDefault();
+        const addForm = e.currentTarget;
 
+        let myPeople = {
+            firstname: addForm.firstname.value,
+            lastname: addForm.lastname.value,
+            picture: addForm.picture.value,
+            birthday: addForm.birthday.value,
+            id: Date.now(),
+        }
+        console.log(addForm);
         // Create a new html for the person
         const newPerson = `
-        <tr>
+            <tr>
                 <td>
-                <img src="{person.picture}" alt="person-avatar" class="rounded-circle">
+                <img src="${myPeople.picture}" alt="myPeople-avatar" class="rounded-circle">
                 </td>
                 <td>
-                    <h3>{person.firstName}</h3>
+                    <h3>${myPeople.firstname}</h3>
                     Turns on 
                 </td>
-				<td>{person.birthday}</td>
+				<td>${myPeople.birthday}</td>
                 <td>
-                    <button class="edit" id={person.id}>Edit</button>
+                    <button class="edit" id=${myPeople.id}>Edit</button>
                 </td>
                 <td>
-                    <button class="delete" id={person.id}>Delete</button>
+                    <button class="delete" id=${myPeople.id}>Delete</button>
                 </td>
-			  </tr>
+			</tr>
         `;
-        table.insertAdjacentHTML('afterend', newPerson);
+        table.innerHTML += newPerson;
         removeAddPopup(newForm);
+        personData.push(newPerson);
+    
+        // addData(personData);
+        restoreData(personData);
         console.log('Submited');
+        table.dispatchEvent(new CustomEvent('updateList'));
     });
 
+    // When the empty space or the cancel button is clicked
     window.addEventListener('click', e => {
         const removeForm = e.target.matches('.add-new-person');
         const cancelAdd = e.target.closest('.cancel-add');
