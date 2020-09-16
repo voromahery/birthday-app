@@ -10,34 +10,27 @@ async function fetchData() {
 
     // Convert the string into an object 
     const resource = await response.json();
+    personData = [...resource];
 
-    addData(resource);
-
+    addData(personData);
     table.dispatchEvent(new CustomEvent('updateList'));
-    return resource;
+    return personData;
 }
 
 fetchData();
 
 // Add to local storage
 async function addToLocalStorage() {
-    const response = await fetch(myData);
-    const resource = await response.json();
-
-    localStorage.setItem('resource', JSON.stringify(resource));
+    localStorage.setItem('personData', JSON.stringify(personData));
 };
 
 // Even if the page is refreshed, our object is stil there.
 async function restoreData() {
-    const response = await fetch(myData);
-    const resource = await response.json();
-
     // changes a string into an object.
-    const people = JSON.parse(localStorage.getItem('resource'));
+    const people = JSON.parse(localStorage.getItem('personData'));
 
     // Check if there is something in the local storage
     if (people) {
-        personData.push(resource);
         personData = people;
     }
 
@@ -45,10 +38,10 @@ async function restoreData() {
 
 }
 
-async function addData(resource) {
+async function addData(personData) {
 
     // Sort the date by those who have birthday sooner
-    const sortBirthdate = await resource.sort((a, b) => a.birthday - b.birthday);
+    const sortBirthdate = await personData.sort((a, b) => a.birthday - b.birthday);
 
     // Create an html
     const html = await sortBirthdate.map(person => `
@@ -96,10 +89,7 @@ async function editPers(e) {
 
 
 async function editPopup(id) {
-    const response = await fetch(myData);
-    const resource = await response.json();
-
-    const findPers = resource.find(person => person.id === id);
+    const findPers = personData.find(person => person.id === id);
 
     // Create an element to store an html
     const form = document.createElement('form');
@@ -119,8 +109,8 @@ async function editPopup(id) {
             <input type="url" name="picture" id="picture" value="${findPers.picture}">
         </label>
         <div class="buttons">
-            <button class="save" id=${findPers.id}>Save</button>
-            <button class="cancel" id=${findPers.id}>cancel</button>
+            <button class="save" type="submit" id=${findPers.id}>Save</button>
+            <button class="cancel" type="button" id=${findPers.id}>cancel</button>
         </div>
     </fieldset>
     `;
@@ -139,7 +129,9 @@ async function editPopup(id) {
         findPers.picture = formData.picture;
         findPers.birthday = formData.birthday;
         findPers.id = Date.now();
+
         table.dispatchEvent(new CustomEvent('updateList'));
+
         console.log(findPers);
     });
 
@@ -173,6 +165,7 @@ async function deletePers(e) {
     }
 }
 
+
 // Remove popup
 async function removeDeletePopup(container) {
     container.classList.remove('open');
@@ -185,10 +178,6 @@ async function removeDeletePopup(container) {
 }
 
 async function deleteId(id) {
-    const response = await fetch(myData);
-    const resource = await response.json();
-    personData = [...resource];
-
     const findPers = personData.find(person => person.id === id);
 
     // Create an element to insert the card
@@ -235,11 +224,13 @@ async function deleteId(id) {
 
     // Event for the button Yes and No
     window.addEventListener('click', deleteConfirmation);
+    table.addEventListener('updateList', deleteConfirmation);
 }
 
 // Event listener
 table.addEventListener('click', deletePers);
 table.addEventListener('click', editPers);
+
 table.addEventListener('updateList', addToLocalStorage);
 table.addEventListener('updateList', deletePers);
 table.addEventListener('updateList', editPers);
