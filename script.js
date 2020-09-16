@@ -1,3 +1,5 @@
+// const { differenceInYears } = require("date-fns");
+
 // Grab all necessary elements and files
 const myData = "./people.json";
 const table = document.querySelector('tbody');
@@ -21,6 +23,7 @@ async function fetchData() {
 
 fetchData();
 
+////////////////////////////////LOCAL STORAGE//////////////////////////////////////////////////
 // Add to local storage
 async function addToLocalStorage() {
     // Change the array of object into string in order to display it on local storage
@@ -37,8 +40,14 @@ async function restoreData() {
     }
     table.dispatchEvent(new CustomEvent('updateList'));
 }
+///////////////////////////////////////////////////////////////////////////////////////////////
 
 async function addData(personData) {
+    // let result = differenceInYears(
+    //     new Date('2020, 09, 15'),
+    //     new Date('2013, 11, 31')
+    //   );
+// console.log(result);
     // Sort the date by those who have birthday sooner
     const sortBirthdate = await personData.sort((a, b) => a.birthday - b.birthday);
     // Create an html
@@ -47,7 +56,10 @@ async function addData(personData) {
                 <td>
                 <img src="${person.picture}" alt="person-avatar" class="rounded-circle">
                 </td>
-				<td>${person.firstName}</td>
+                <td>
+                    <h3>${person.firstName}</h3>
+                    <h3>Turns on </h3>
+                </td>
 				<td>${person.birthday}</td>
                 <td>
                     <button class="edit" id=${person.id}>Edit</button>
@@ -129,6 +141,7 @@ async function editPopup(id) {
             }
 
             findPers.lastName = myPeople.lastname;
+            console.log(findPers.lastName = myPeople.lastname);
             findPers.firstName = myPeople.firstname;
             findPers.picture = myPeople.picture;
             findPers.birthday = myPeople.birthday;
@@ -161,7 +174,6 @@ async function editPopup(id) {
 
 // Delete icon
 async function deletePers(e) {
-
     // Grab the delete button
     const deleteButton = await e.target.closest('.delete');
 

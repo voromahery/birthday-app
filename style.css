@@ -45,6 +45,8 @@ tr {
 }
 
 img {
+    max-width: 128px;
+    max-height: 128px;
     border-radius: 50%;
     box-shadow: 3px 4px 11px black;
 }
@@ -61,4 +63,29 @@ img {
 
 label {
     padding-bottom: 0.5rem;
+}
+.edit, .delete {
+    border: none;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-color: #FFFFFF;
+    background-size: cover;
+    text-indent: -9999px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+.edit:hover,
+.delete:hover {
+    opacity: 0.5;
+}
+
+.edit {
+    background-image: url('./icons/edit-icon.png');
+}
+
+.delete {
+    background-image: url('./icons/delete-icon.png');
 }
