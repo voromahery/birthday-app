@@ -12,6 +12,7 @@ async function fetchData() {
     const resource = await response.json();
     personData = [...resource];
 
+    restoreData(personData);
     addData(personData);
     table.dispatchEvent(new CustomEvent('updateList'));
     return personData;
@@ -121,7 +122,7 @@ async function editPopup(id) {
         const confirm = e.target.closest('.save');
         if (confirm) {
             const formData = e.currentTarget;
-            console.log('form',formData);
+            console.log('form', formData);
             removeEditPopup(form);
             e.preventDefault();
 
@@ -132,6 +133,7 @@ async function editPopup(id) {
                 birthday: formData.birthday.value,
                 id: findPers.id,
             }
+
             findPers.lastName = myPeople.lastname;
             findPers.firstName = myPeople.firstname;
             findPers.picture = myPeople.picture;
@@ -140,8 +142,7 @@ async function editPopup(id) {
 
             addData(personData);
             table.dispatchEvent(new CustomEvent('updateList'));
-            console.log('Firstname',findPers.lastname);
-            console.log('FindPers',findPers);
+            console.log('FindPers', findPers);
         }
     };
 
