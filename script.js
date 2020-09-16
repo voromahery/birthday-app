@@ -117,23 +117,33 @@ async function editPopup(id) {
     form.innerHTML = formHtml;
 
     // If save is clicked
-    form.addEventListener('submit', (e) => {
-        const formData = e.currentTarget;
-        console.log(formData);
-        console.log('jhadf');
-        removeEditPopup(form);
-        e.preventDefault();
+    const editConfirm = (e) => {
+        const confirm = e.target.closest('.save');
+        if (confirm) {
+            const formData = e.currentTarget;
+            console.log('form',formData);
+            removeEditPopup(form);
+            e.preventDefault();
 
-        findPers.lastName = formData.value;
-        findPers.firstName = formData.value;
-        findPers.picture = formData.picture;
-        findPers.birthday = formData.birthday;
-        findPers.id = Date.now();
+            let myPeople = {
+                firstname: formData.firstname.value,
+                lastname: formData.lastname.value,
+                picture: formData.picture.value,
+                birthday: formData.birthday.value,
+                id: findPers.id,
+            }
+            findPers.lastName = myPeople.lastname;
+            findPers.firstName = myPeople.firstname;
+            findPers.picture = myPeople.picture;
+            findPers.birthday = myPeople.birthday;
+            findPers.id = myPeople.id;
 
-        table.dispatchEvent(new CustomEvent('updateList'));
-
-        console.log(findPers);
-    });
+            addData(personData);
+            table.dispatchEvent(new CustomEvent('updateList'));
+            console.log('Firstname',findPers.lastname);
+            console.log('FindPers',findPers);
+        }
+    };
 
     // If the empty space or the cancel button is clicked
     window.addEventListener('click', e => {
@@ -150,6 +160,7 @@ async function editPopup(id) {
     // Add to the body
     document.body.appendChild(form);
     form.classList.add('open');
+    form.addEventListener('click', editConfirm);
 }
 
 // Delete icon
@@ -164,7 +175,6 @@ async function deletePers(e) {
         table.dispatchEvent(new CustomEvent('updateList'));
     }
 }
-
 
 // Remove popup
 async function removeDeletePopup(container) {
@@ -234,4 +244,5 @@ table.addEventListener('click', editPers);
 table.addEventListener('updateList', addToLocalStorage);
 table.addEventListener('updateList', deletePers);
 table.addEventListener('updateList', editPers);
+
 restoreData();
