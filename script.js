@@ -8,22 +8,6 @@ const addButton = document.querySelector('.add-button');
 // Created an empty array to store the data.
 let personData = [];
 
-
-async function fetchData() {
-    // Fetch the data
-    const response = await fetch(myData);
-    // Convert the string into an object 
-    const resource = await response.json();
-    // Store the resource in the empty array
-    personData = [...resource];
-    restoreData(personData);
-    addData(personData);
-    table.dispatchEvent(new CustomEvent('updateList'));
-    return personData;
-}
-
-fetchData();
-
 ////////////////////////////////LOCAL STORAGE//////////////////////////////////////////////////
 // Add to local storage
 async function addToLocalStorage() {
@@ -41,7 +25,23 @@ async function restoreData() {
     }
     table.dispatchEvent(new CustomEvent('updateList'));
 }
-///////////////////////////////////////////////////////////////////////////////////////////////
+
+async function fetchData() {
+    // Fetch the data
+    const response = await fetch(myData);
+    // Convert the string into an object 
+    const resource = await response.json();
+    // Store the resource in the empty array
+    personData = [...resource];
+    restoreData(personData);
+    addData(personData);
+    table.dispatchEvent(new CustomEvent('updateList'));
+    return personData;
+}
+
+fetchData();
+
+//////////////////////////////////////// EDIT A PERSON ///////////////////////////////////////////////////////
 
 async function addData(personData) {
     //      let result = differenceInYears(
@@ -185,6 +185,8 @@ async function deletePers(e) {
     }
 }
 
+//////////////////////////////// DELETE PERSON /////////////////////////////////////////////
+
 // Remove popup
 async function removeDeletePopup(container) {
     container.classList.remove('open');
@@ -246,6 +248,7 @@ async function deleteId(id) {
     table.addEventListener('updateList', deleteConfirmation);
 }
 
+/////////////////////////////////////////// ADD A NEW PERSON /////////////////////////////////////
 
 // Remove popup
 async function removeAddPopup(newForm) {
@@ -294,12 +297,13 @@ addButton.addEventListener('click', e => {
         const addForm = e.currentTarget;
 
         let myPeople = {
+            id: Date.now(),
             firstname: addForm.firstname.value,
             lastname: addForm.lastname.value,
             picture: addForm.picture.value,
             birthday: addForm.birthday.value,
-            id: Date.now(),
         }
+
         console.log(addForm);
         // Create a new html for the person
         const newPerson = `
@@ -321,13 +325,15 @@ addButton.addEventListener('click', e => {
 			</tr>
         `;
         table.innerHTML += newPerson;
-        removeAddPopup(newForm);
-        personData.push(newPerson);
-    
-        // addData(personData);
-        restoreData(personData);
-        console.log('Submited');
+
+        // Add the new person to the Array: personData
+        personData.push(myPeople);
+        console.log(personData);
+
+        addData(myPeople);
+        // restoreData(personData);
         table.dispatchEvent(new CustomEvent('updateList'));
+        removeAddPopup(newForm);
     });
 
     // When the empty space or the cancel button is clicked
