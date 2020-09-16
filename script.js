@@ -3,6 +3,7 @@
 // Grab all necessary elements and files
 const myData = "./people.json";
 const table = document.querySelector('tbody');
+const addButton = document.querySelector('.add-button');
 
 // Created an empty array to store the data.
 let personData = [];
@@ -43,11 +44,11 @@ async function restoreData() {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 async function addData(personData) {
-    // let result = differenceInYears(
-    //     new Date('2020, 09, 15'),
-    //     new Date('2013, 11, 31')
-    //   );
-// console.log(result);
+//      let result = differenceInYears(
+//          new Date('2020, 09, 15'),
+//          new Date('2020, 12, 31')
+//        );
+//  console.log(result);
     // Sort the date by those who have birthday sooner
     const sortBirthdate = await personData.sort((a, b) => a.birthday - b.birthday);
     // Create an html
@@ -58,7 +59,7 @@ async function addData(personData) {
                 </td>
                 <td>
                     <h3>${person.firstName}</h3>
-                    <h3>Turns on </h3>
+                    Turns on 
                 </td>
 				<td>${person.birthday}</td>
                 <td>
@@ -244,6 +245,87 @@ async function deleteId(id) {
     window.addEventListener('click', deleteConfirmation);
     table.addEventListener('updateList', deleteConfirmation);
 }
+
+
+// Remove popup
+async function removeAddPopup(newForm) {
+    newForm.classList.remove('open');
+
+    // Delete the popup right after
+    newForm.remove();
+
+    // Remove it from javascript memory
+    newForm = null;
+}
+
+// Add a new person 
+addButton.addEventListener('click', e => {
+    console.log("hdjkahjk");
+    // Create an element to store an html
+    const newForm = document.createElement('form');
+    newForm.classList.add('add-new-person');
+    const newFormHtml = `
+    <fieldset class="edit-field">
+        <label for="first-name">First name
+            <input type="text" name="firstname" id="firstname">
+        </label>
+        <label for="last-name">Last name
+            <input type="text" name="lastname" id="lastname">
+        </label>
+        <label for="birthday">Birthday
+            <input type="text" name="birthday" id="birthday">
+        </label>
+        <label for="picture">Picture
+            <input type="url" name="picture" id="picture">
+        </label>
+        <div class="buttons">
+            <button class="add" type="submit">Save</button>
+            <button class="cancel-add" type="button">cancel</button>
+        </div>
+    </fieldset>
+    `;
+    newForm.innerHTML = newFormHtml;
+    // Add to the body
+    document.body.appendChild(newForm);
+    newForm.classList.add('open');
+
+    newForm.addEventListener('submit', e => {
+        e.preventDefault();
+
+        // Create a new html for the person
+        const newPerson = `
+        <tr>
+                <td>
+                <img src="{person.picture}" alt="person-avatar" class="rounded-circle">
+                </td>
+                <td>
+                    <h3>{person.firstName}</h3>
+                    Turns on 
+                </td>
+				<td>{person.birthday}</td>
+                <td>
+                    <button class="edit" id={person.id}>Edit</button>
+                </td>
+                <td>
+                    <button class="delete" id={person.id}>Delete</button>
+                </td>
+			  </tr>
+        `;
+        table.insertAdjacentHTML('afterend', newPerson);
+        removeAddPopup(newForm);
+        console.log('Submited');
+    });
+
+    window.addEventListener('click', e => {
+        const removeForm = e.target.matches('.add-new-person');
+        const cancelAdd = e.target.closest('.cancel-add');
+        if (cancelAdd || removeForm) {
+            removeAddPopup(newForm);
+            console.log('cancelled');
+        }
+    });
+});
+
 
 // Event listener
 table.addEventListener('click', deletePers);

@@ -1,6 +1,13 @@
 body {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     background-color: #0315b2;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+table {
+    margin: auto;
+    grid-column: 1/5;
 }
 
 tbody {
@@ -16,6 +23,11 @@ tr {
     grid-gap: 1rem;
 }
 
+.button {
+    grid-column: 5/5;
+}
+
+.add-new-person,
 .container,
 .edit-form {
     top: 0;
@@ -39,6 +51,7 @@ tr {
     background: #FFFFFF;
 }
 
+.add-new-person.open,
 .container.open,
 .edit-form.open {
     opacity: 1;
