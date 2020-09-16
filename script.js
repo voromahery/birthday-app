@@ -2,16 +2,17 @@
 const myData = "./people.json";
 const table = document.querySelector('tbody');
 
+// Created an empty array to store the data.
 let personData = [];
 
-// Fetch the data
-async function fetchData() {
-    const response = await fetch(myData);
 
+async function fetchData() {
+    // Fetch the data
+    const response = await fetch(myData);
     // Convert the string into an object 
     const resource = await response.json();
+    // Store the resource in the empty array
     personData = [...resource];
-
     restoreData(personData);
     addData(personData);
     table.dispatchEvent(new CustomEvent('updateList'));
@@ -22,6 +23,7 @@ fetchData();
 
 // Add to local storage
 async function addToLocalStorage() {
+    // Change the array of object into string in order to display it on local storage
     localStorage.setItem('personData', JSON.stringify(personData));
 };
 
@@ -29,21 +31,16 @@ async function addToLocalStorage() {
 async function restoreData() {
     // changes a string into an object.
     const people = JSON.parse(localStorage.getItem('personData'));
-
     // Check if there is something in the local storage
     if (people) {
         personData = people;
     }
-
     table.dispatchEvent(new CustomEvent('updateList'));
-
 }
 
 async function addData(personData) {
-
     // Sort the date by those who have birthday sooner
     const sortBirthdate = await personData.sort((a, b) => a.birthday - b.birthday);
-
     // Create an html
     const html = await sortBirthdate.map(person => `
 			  <tr>
@@ -67,17 +64,14 @@ async function addData(personData) {
 // Remove popup
 async function removeEditPopup(form) {
     form.classList.remove('open');
-
     // Delete the popup right after
     form.remove();
-
     // Remove it from javascript memory
     form = null;
 }
 
 // Edit person 
 async function editPers(e) {
-
     // Grab the edit button
     const editButton = e.target.closest('.edit');
 
@@ -90,8 +84,8 @@ async function editPers(e) {
 
 
 async function editPopup(id) {
+    // Find the person by his/her id
     const findPers = personData.find(person => person.id === id);
-
     // Create an element to store an html
     const form = document.createElement('form');
     form.classList.add('edit-form');
@@ -147,7 +141,7 @@ async function editPopup(id) {
     };
 
     // If the empty space or the cancel button is clicked
-    window.addEventListener('click', e => {
+    const cancelEdit = (e) => {
         e.preventDefault();
         const removeForm = e.target.matches('.edit-form');
         const cancel = e.target.closest('.cancel');
@@ -156,12 +150,13 @@ async function editPopup(id) {
             removeEditPopup(form);
             table.dispatchEvent(new CustomEvent('updateList'));
         }
-    });
+    };
 
     // Add to the body
     document.body.appendChild(form);
     form.classList.add('open');
     form.addEventListener('click', editConfirm);
+    window.addEventListener('click', cancelEdit);
 }
 
 // Delete icon
