@@ -47,16 +47,7 @@ async function addData(personData) {
 
     // Sort the date by those who have birthday sooner
     const sortBirthdate = await personData.sort((a, b) => a.birthday - b.birthday);
-    let date = new Date(138625637951);
     let dateNow = new Date(Date.now());
-    console.log(dateNow);
-    console.log(date);
-    console.log(date.getDate());
-    console.log('Day left',date.getDate() - dateNow.getDate());
-    console.log(date.getMonth());
-    console.log('Month left', dateNow.getMonth() - date.getMonth());
-    console.log(date.getFullYear());
-    console.log('Age', 2020 - date.getFullYear());
 
     // Create an html
     const html = await sortBirthdate.map(person => `
@@ -287,7 +278,7 @@ addButton.addEventListener('click', e => {
              <input type="text" name="lastname" id="lastname" value="">
          </label>
          <label for="birthday">Birthday
-             <input type="text" name="birthday" id="birthday" value="">
+             <input type="date" name="birthday" id="birthday" value="">
          </label>
          <label for="picture">Picture
              <input type="url" name="picture" id="picture" value="">
