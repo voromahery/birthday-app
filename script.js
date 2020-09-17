@@ -98,7 +98,7 @@ async function editPers(e) {
 
 async function editPopup(id) {
     // Find the person by his/her id
-    const findPers = personData.find(person => person.id === id);
+    const findPers = personData.find(person => person.id == id);
     // Create an element to store an html
     const form = document.createElement('form');
     form.classList.add('edit-form');
@@ -199,7 +199,7 @@ async function removeDeletePopup(container) {
 }
 
 async function deleteId(id) {
-    const findPers = personData.find(person => person.id === id);
+    const findPers = personData.find(person => person.id == id);
 
     // Create an element to insert the card
     const container = document.createElement('div');
@@ -225,7 +225,7 @@ async function deleteId(id) {
         // If yes is clicked.
         const confirmButton = e.target.matches('.delete-confirm');
         if (confirmButton) {
-            const personId = personData.filter(person => person.id !== id);
+            const personId = personData.filter(person => person.id != id);
             personData = personId;
             addData(personId);
             removeDeletePopup(container);
@@ -326,14 +326,15 @@ addButton.addEventListener('click', e => {
         `;
         table.innerHTML += newPerson;
 
+        removeAddPopup(newForm);
+
         // Add the new person to the Array: personData
+        personData = [...personData];
         personData.push(myPeople);
         console.log(personData);
 
         addData(myPeople);
-        // restoreData(personData);
         table.dispatchEvent(new CustomEvent('updateList'));
-        removeAddPopup(newForm);
     });
 
     // When the empty space or the cancel button is clicked
