@@ -44,8 +44,20 @@ fetchData();
 //////////////////////////////////////// EDIT A PERSON ///////////////////////////////////////////////////////
 
 async function addData(personData) {
+
     // Sort the date by those who have birthday sooner
     const sortBirthdate = await personData.sort((a, b) => a.birthday - b.birthday);
+    let date = new Date(138625637951);
+    let dateNow = new Date(Date.now());
+    console.log(dateNow);
+    console.log(date);
+    console.log(date.getDate());
+    console.log('Day left',date.getDate() - dateNow.getDate());
+    console.log(date.getMonth());
+    console.log('Month left', dateNow.getMonth() - date.getMonth());
+    console.log(date.getFullYear());
+    console.log('Age', 2020 - date.getFullYear());
+
     // Create an html
     const html = await sortBirthdate.map(person => `
 			  <tr>
@@ -54,9 +66,13 @@ async function addData(personData) {
                 </td>
                 <td>
                     <h3>${person.firstName}</h3>
-                    Turns on 
+                    Turns ${(dateNow.getFullYear() - (new Date(person.birthday).getFullYear()))}
+                     on ${new Date(person.birthday).toLocaleString('default', {month: 'long'})}
+                     ${new Date(person.birthday).getDate()}th 
                 </td>
-				<td>${person.birthday}</td>
+                <td>
+                    <h3>${(new Date(person.birthday).getDate()) - (dateNow.getDay())}<br> Days</h3>
+                </td>
                 <td>
                     <button class="edit" id=${person.id}>Edit</button>
                 </td>
@@ -107,7 +123,7 @@ async function editPopup(id) {
             <input type="text" name="lastname" id="lastname" value="${findPers.lastName}">
         </label>
         <label for="birthday">Birthday
-            <input type="text" name="birthday" id="birthday" value="${findPers.birthday}">
+            <input type="text" name="birthday" id="birthday" value="${(new Date(findPers.birthday)).getDate()}-${new Date(findPers.birthday).toLocaleString('default', {month: 'long'})}-${(new Date(findPers.birthday)).getFullYear()}">
         </label>
         <label for="picture">Picture
             <input type="url" name="picture" id="picture" value="${findPers.picture}">
@@ -299,26 +315,6 @@ addButton.addEventListener('click', e => {
             picture: addForm.picture.value,
             birthday: addForm.birthday.value,
         }
-
-        // Create a new html for the person
-        // const newPerson = `
-        //     <tr>
-        //         <td>
-        //         <img src="${myPerson.picture}" alt="${myPerson.firstname}-avatar" class="rounded-circle">
-        //         </td>
-        //         <td>
-        //             <h3>${myPerson.firstname}</h3>
-        //             Turns on 
-        //         </td>
-        // 		<td>${myPerson.birthday}</td>
-        //         <td>
-        //             <button class="edit" id=${myPerson.id}>Edit</button>
-        //         </td>
-        //         <td>
-        //             <button class="delete" id=${myPerson.id}>Delete</button>
-        //         </td>
-        // 	</tr>
-        // `;
 
         // Add the new person to the Array: personData
         personData.push(myPerson);
