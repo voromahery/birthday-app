@@ -1,5 +1,3 @@
-// const { differenceInYears } = require("date-fns");
-
 // Grab all necessary elements and files
 const myData = "./people.json";
 const table = document.querySelector('tbody');
@@ -23,6 +21,15 @@ async function restoreData() {
     if (people) {
         personData = people;
     }
+
+    if (!people) {
+        // Fetch the data
+        const response = await fetch(myData);
+        // Convert the string into an object 
+        const resource = await response.json();
+        restoreData(personData);
+        addData(personData);
+    }
     table.dispatchEvent(new CustomEvent('updateList'));
 }
 
@@ -44,10 +51,18 @@ fetchData();
 //////////////////////////////////////// EDIT A PERSON ///////////////////////////////////////////////////////
 
 async function addData(personData) {
-
-    // Sort the date by those who have birthday sooner
-    const sortBirthdate = await personData.sort((a, b) => a.birthday - b.birthday);
     let dateNow = new Date(Date.now());
+    // Sort the date by those who have birthday sooner
+    const sortBirthdate = await personData.sort((a, b) => (new Date(a.birthday).getDate() - (dateNow.getDay())) - (new Date(b.birthday).getDate()) - (dateNow.getDay()));
+    let date = new Date(138625637951);
+    console.log(dateNow);
+    console.log(date);
+    console.log("Day", date.getDay());
+    console.log(date.getDate());
+    console.log(date.getMonth());
+    console.log('Month left', dateNow.getMonth() - date.getMonth());
+    console.log(date.getFullYear());
+    console.log('Age', 2020 - date.getFullYear());
 
     // Create an html
     const html = await sortBirthdate.map(person => `
@@ -58,7 +73,7 @@ async function addData(personData) {
                 <td>
                     <h3>${person.firstName}</h3>
                     Turns ${(dateNow.getFullYear() - (new Date(person.birthday).getFullYear()))}
-                     on ${new Date(person.birthday).toLocaleString('default', {month: 'long'})}
+                     on ${new Date(person.birthday).toLocaleString('default', { month: 'long' })}
                      ${new Date(person.birthday).getDate()}th 
                 </td>
                 <td>
@@ -114,7 +129,7 @@ async function editPopup(id) {
             <input type="text" name="lastname" id="lastname" value="${findPers.lastName}">
         </label>
         <label for="birthday">Birthday
-            <input type="text" name="birthday" id="birthday" value="${(new Date(findPers.birthday)).getDate()}-${new Date(findPers.birthday).toLocaleString('default', {month: 'long'})}-${(new Date(findPers.birthday)).getFullYear()}">
+            <input type="text" name="birthday" id="birthday" value="${(new Date(findPers.birthday)).getDate()}-${new Date(findPers.birthday).toLocaleString('default', { month: 'long' })}-${(new Date(findPers.birthday)).getFullYear()}">
         </label>
         <label for="picture">Picture
             <input type="url" name="picture" id="picture" value="${findPers.picture}">
