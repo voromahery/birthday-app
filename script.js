@@ -50,18 +50,10 @@ fetchData();
 //////////////////////////////////////// EDIT A PERSON ///////////////////////////////////////////////////////
 
 async function addData(personData) {
-    let dateNow = new Date(Date.now());
+    const dateNow = new Date(Date.now());
+
     // Sort the date by those who have birthday sooner
     const sortBirthdate = await personData.sort((a, b) => a.birthday - b.birthday);
-    let date = new Date(138625637951);
-    console.log(dateNow);
-    console.log(date);
-    console.log("Day", date.getDay());
-    console.log(date.getDate());
-    console.log(date.getMonth());
-    console.log('Month left', dateNow.getMonth() - date.getMonth());
-    console.log(date.getFullYear());
-    console.log('Age', 2020 - date.getFullYear());
 
     // Create an html
     const html = await sortBirthdate.map(person => `

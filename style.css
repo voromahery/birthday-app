@@ -1,6 +1,6 @@
 body {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     background-color: #0315b2;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
@@ -24,7 +24,7 @@ tr {
 }
 
 .button {
-    grid-column: 5/5;
+    grid-column: 4/4;
 }
 
 .add-new-person,
