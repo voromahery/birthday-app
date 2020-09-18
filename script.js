@@ -20,14 +20,13 @@ async function restoreData() {
     // Check if there is something in the local storage
     if (people) {
         personData = people;
-    }
-
-    if (!people) {
+    } if (!people) {
         // Fetch the data
         const response = await fetch(myData);
         // Convert the string into an object 
         const resource = await response.json();
-        restoreData(personData);
+        // Store the resource in the empty array
+        personData = [...resource];
         addData(personData);
     }
     table.dispatchEvent(new CustomEvent('updateList'));
@@ -53,7 +52,7 @@ fetchData();
 async function addData(personData) {
     let dateNow = new Date(Date.now());
     // Sort the date by those who have birthday sooner
-    const sortBirthdate = await personData.sort((a, b) => (new Date(a.birthday).getDate() - (dateNow.getDay())) - (new Date(b.birthday).getDate()) - (dateNow.getDay()));
+    const sortBirthdate = await personData.sort((a, b) => a.birthday - b.birthday);
     let date = new Date(138625637951);
     console.log(dateNow);
     console.log(date);
