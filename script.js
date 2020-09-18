@@ -50,11 +50,55 @@ fetchData();
 //////////////////////////////////////// EDIT A PERSON ///////////////////////////////////////////////////////
 
 async function addData(personData) {
+    // const daysLeft = (new Date(person.birthday).getDate()) - (dateNow.getDay());
+    // const age = (dateNow.getFullYear() - (new Date(person.birthday).getFullYear()));
+    // const month = new Date(person.birthday).toLocaleString('default', { month: 'long' });
+    // const day = () => {
+    //     const days = new Date(person.birthday).getDate();
+    //     if (days > 3) {
+    //         return `${days}th`;
+    //     } else if (days === 1) {
+    //         return `${days}st`;
+    //     } else if (days === 2) {
+    //         return `${days}nd`;
+    //     } else if (days === 3) {
+    //         return `${days}rd`;
+    //     }
+    // };
     const dateNow = new Date(Date.now());
 
-    // Sort the date by those who have birthday sooner
-    const sortBirthdate = await personData.sort((a, b) => a.birthday - b.birthday);
+    const time = personData.map(person => {
+        const daysLeft = (new Date(person.birthday).getDate()) - (dateNow.getDay());
+        const age = (dateNow.getFullYear() - (new Date(person.birthday).getFullYear()));
+        const month = new Date(person.birthday).toLocaleString('default', { month: 'long' });
 
+            const days = new Date(person.birthday).getDate();
+            if (days > 3) {
+                 `${days}th`;
+            } else if (days === 1 || days === 21 || days === 31) {
+                 `${days}st`;
+            } else if (days === 2 || days === 22) {
+                 `${days}nd`;
+            } else if (days === 3 || days === 23) {
+                 `${days}rd`;
+            };
+
+            let date = {
+                picture: person.picture,
+                firstName: person.firstName,
+                lastName: person.lastName,
+                birthday: person.birthday,
+                id: person.id,
+                month: person.month,
+                age: person.age,
+                days: person.days,
+            }
+            console.log(date.firstName);
+            return date;
+    })
+console.log(time);
+    // Sort the date by those who have birthday sooner
+    const sortBirthdate = await time.sort((a, b) => a.birthday - b.birthday);
     // Create an html
     const html = await sortBirthdate.map(person => `
 			  <tr>
@@ -65,7 +109,7 @@ async function addData(personData) {
                     <h3>${person.firstName}</h3>
                     Turns ${(dateNow.getFullYear() - (new Date(person.birthday).getFullYear()))}
                      on ${new Date(person.birthday).toLocaleString('default', { month: 'long' })}
-                     ${new Date(person.birthday).getDate()}th 
+                     ${new Date(person.birthday).getDate()} 
                 </td>
                 <td>
                     <h3>${(new Date(person.birthday).getDate()) - (dateNow.getDay())}<br> Days</h3>
