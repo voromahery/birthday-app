@@ -69,24 +69,24 @@ async function addData(personData) {
     const time = personData.map(person => {
         const dateBirthday = new Date(person.birthday);
         const timeDiff = Math.abs(dateNow.getTime() - dateBirthday.getTime());
-        const dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-        // if (dayDiff > 0) {
-        //      dayDiff + 365;
-        // }
+        let dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        // if (dayDiff < 0) {
+        //     dayDiff =  dayDiff + 365;
+        //  }
         const daysLeft = dayDiff;
         const age = dateNow.getFullYear() - new Date(person.birthday).getFullYear();
         const month = new Date(person.birthday).toLocaleString('default', { month: 'long' });
 
-        const days = new Date(person.birthday).getDate();
+        let days = new Date(person.birthday).getDate();
         
         if (days === 1 || days === 21 || days === 31) {
-            `${days}st`;
+           days =`${days}st`;
         } else if (days === 2 || days === 22) {
-            `${days}nd`;
+            days = `${days}nd`;
         } else if (days === 3 || days === 23) {
-            `${days}rd`;
+           days = `${days}rd`;
         } else {
-            `${days}th`;
+           days = `${days}th`;
         };
 
         const date = {
