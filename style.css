@@ -21,6 +21,55 @@ tr {
     grid-template-columns: repeat(5, 1fr);
     align-items: center;
     grid-gap: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+button {
+    font-weight: 700;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-shadow: 1px 1px 1px black;
+}
+
+button:hover {
+    box-shadow: 0px 0px 2px 1px black;
+    transition: all 1s;
+}
+
+img:active {
+    box-shadow: none;
+}
+
+.save,
+.undelete {
+    background-color: blue;
+
+}
+
+.delete-confirm {
+    background-color: red;
+}
+
+tr:hover {
+    box-shadow: 4px 5px 12px #030331;
+    transition: all 0.3s;
+}
+
+.cancel,
+.cancel-add {
+    background-color: #ff00d0;
+}
+
+.add-button {
+    background-color: #53b853;
+}
+
+tr:nth-child(odd) {
+    background-color: #2692ba;
 }
 
 .button {
