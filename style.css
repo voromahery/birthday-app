@@ -54,7 +54,8 @@ img:active {
     background-color: red;
 }
 
-tr:hover {
+tr:hover,
+tr:active {
     box-shadow: 4px 5px 12px #030331;
     transition: all 0.3s;
 }

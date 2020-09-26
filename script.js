@@ -50,43 +50,31 @@ fetchData();
 //////////////////////////////////////// EDIT A PERSON ///////////////////////////////////////////////////////
 
 async function addData(personData) {
-    // const daysLeft = (new Date(person.birthday).getDate()) - (dateNow.getDay());
-    // const age = (dateNow.getFullYear() - (new Date(person.birthday).getFullYear()));
-    // const month = new Date(person.birthday).toLocaleString('default', { month: 'long' });
-    // const day = () => {
-    //     const days = new Date(person.birthday).getDate();
-    //     if (days > 3) {
-    //         return `${days}th`;
-    //     } else if (days === 1) {
-    //         return `${days}st`;
-    //     } else if (days === 2) {
-    //         return `${days}nd`;
-    //     } else if (days === 3) {
-    //         return `${days}rd`;
-    //     }
-    // };
     const dateNow = new Date(Date.now());
     const time = personData.map(person => {
         const dateBirthday = new Date(person.birthday);
-        const timeDiff = Math.abs(dateNow.getTime() - dateBirthday.getTime());
+        const timeDiff = Math.abs(dateBirthday.getTime() - dateNow.getTime());
+
+        // 1000 * 3600 * 24 millisecond per day
         let dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
         // if (dayDiff < 0) {
         //     dayDiff =  dayDiff + 365;
         //  }
+        console.log(dayDiff);
         const daysLeft = dayDiff;
         const age = dateNow.getFullYear() - new Date(person.birthday).getFullYear();
         const month = new Date(person.birthday).toLocaleString('default', { month: 'long' });
 
         let days = new Date(person.birthday).getDate();
-        
+
         if (days === 1 || days === 21 || days === 31) {
-           days =`${days}st`;
+            days = `${days}st`;
         } else if (days === 2 || days === 22) {
             days = `${days}nd`;
         } else if (days === 3 || days === 23) {
-           days = `${days}rd`;
+            days = `${days}rd`;
         } else {
-           days = `${days}th`;
+            days = `${days}th`;
         };
 
         const date = {
