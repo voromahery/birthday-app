@@ -1,42 +1,47 @@
 # Term 3 JS Project : Birthday App
 
-Hey team! So the final project here will be a birthday list.
+- In a few sentences, explain the structure of your project.
 
-We have a list of persons. The app will show us whose person is the closest to have their birthday.
+## Structure of the project
 
-You have a file in the project called person.json. It contains a list of persons, and we want to add all those persons to our birthday list app.
+### 1- General
 
-The first time you launch the app, it should fetch all the data from the people.json local file. You can use fetch for that, it also works with local files.
+- Firstly, I grab all the elements that I needed from the html and the data  that contains the list of people from the json file.
 
-Once they are loaded in the app, you can save them on localstorage, and you don't need to work with the json file anymore.
+- Secondly, I created an empty array to store my data, then I added my data to local storage.
 
-The app will show the list of people, sorted by the ones who will have their birthday the soonest.
+- After all of that, the data in people.json is fetched then added inside the empty array.
 
-![assets/Screenshot_2020-09-12_at_16.57.18.png](assets/Screenshot_2020-09-12_at_16.57.18.png)
+- In the fourth part, a function that contain all of the html structure for the data is created, then sorted all person by the day left until their birthday. That means, the one who has nearer birthday is the first then the on who has next, and so on.
 
-The screenshot is just an example of a possible layout. Feel free to create a custom layout with boostrap if you want to.
+- After that, the html that is created is added inside the table element that has been grabbed.
 
-The users will be able to add a new element on the list (only on the app list localstorage, not on the json). Here are the fields :
+### 2- For the delete
 
--   first name
--   last name
--   birthday (datepicker)
--   an url for their avatar image
--   an id for handling the operations on the objects. (no need to add that on the form)
+- Firstly, `filter()` is used to filter the people that have different `id` to the target.
 
-The users should be able to edit an element on the list. When you click the edit button, a modal should appear with a form inside, to edit any attribute.
+- Secondly, popup that contains two buttons: **confirming** and **cancelling**, then added that html inside a container that we have grabbed.
 
-The users should be able to delete an element. There will be a modal that will ask if you're sure to delete the element.
+- The two buttons are grabbed by using `e.target.closest()`. If the **confirming** button is clicked, a person will be deleted and the popup will disappear. However, if **cancel** is clicked, the list will stay the same because nothing is deleted and the popup will also disappear.
 
-Every action should be persisted into the local storage.
+### 3- For edit
 
-Here is the package you should use for handling date computations. Add it as a dependency of your project
+- Firstly, `find()` is used to get the person wo has the same id as the target.
 
-[https://date-fns.org/v1.29.0/docs/differenceInYears](https://date-fns.org/v1.29.0/docs/differenceInYears)
+- Secondly, form is created to edit each person. The same as delete popup, if the confirm or the cancel button is clicked, the form will immediately disappear, but for confirm, everything that is changed will appear on DOM. However, for the cancel, nothing will be changed.
 
-Again, try to make a plan, by dividing big tasks into smaller ones.
-You have the whole week to work on it. You can collaborate with other students, but copy/pasting code is forbidden.
-Once you're finished with the functionality, try to make your app more appealing with css and other tricks.
-Be creative 🎨
+### 4- For adding
 
-Good Luck
+- A form is created and then, pushed the value of that form in the empty array so that we can both store it in the local storage and display it on the DOM.
+
+## Any improvement
+
+- I still need to work on the day left until the next birthday because mine gives more than thousand days
+
+## Most challenging part
+
+- Counting the day left of the person until the next birthday is the most challenging and also sorting it.
+
+## More explanation about a specific part
+
+- I need more explanation on how to use the `date-fns` because when I tried to use it, it throws an error.
