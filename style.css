@@ -1,6 +1,4 @@
 body {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
     background-color: #0315b2;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
@@ -74,7 +72,9 @@ tr:nth-child(odd) {
 }
 
 .button {
-    grid-column: 4/4;
+    grid-column: 2/2;
+    align-self: center;
+    text-align: end;
 }
 
 .add-new-person,
@@ -86,7 +86,6 @@ tr:nth-child(odd) {
     background-color: hsla(0, 0%, 30%, 0.5);
     width: 100vw;
     height: 100vh;
-    /* opacity: 0; */
 }
 
 .card {
@@ -151,4 +150,31 @@ label {
 
 .delete {
     background-image: url('./icons/delete-icon.png');
+}
+
+h1 {
+    text-align: center;
+}
+
+.search-form {
+    max-width: 1122px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.search-form,
+h1 {
+    color: #FFFFFF;
+}
+
+.search-form label {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-form input,
+.search-form select {
+    max-width: 200px;
 }
