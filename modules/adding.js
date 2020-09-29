@@ -1,7 +1,7 @@
 import { table } from './elements.js';
-import { removeAddPopup } from './remove-popup.js';
 import { personData } from './index.js';
 import { addData } from './script.js';
+import { removeAddPopup } from './remove-popup.js';
 
 // Add a new person 
  export const addPers = (e) => {

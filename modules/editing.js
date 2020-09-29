@@ -1,5 +1,5 @@
-import { editPopup } from './edit-popup.js';
 import { table } from './elements.js';
+import { editPopup } from './edit-popup.js';
 
 // Edit person 
 export async function editPers(e) {

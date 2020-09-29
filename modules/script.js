@@ -1,7 +1,7 @@
 import { table , addButton} from './elements.js';
-import { addPers } from './adding.js';
 import { restoreData, addToLocalStorage } from './index.js';
 import { editPers } from './editing.js';
+import { addPers } from './adding.js';
 import { deletePers } from './deleting.js';
 
 export async function addData(personData) {

@@ -1,0 +1,154 @@
+body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: #0315b2;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+table {
+    margin: auto;
+    grid-column: 1/5;
+}
+
+tbody {
+    color: #FFFFFF;
+    display: grid;
+    grid-gap: 1rem;
+}
+
+tr {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    grid-gap: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+button {
+    font-weight: 700;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-shadow: 1px 1px 1px black;
+}
+
+button:hover {
+    box-shadow: 0px 0px 2px 1px black;
+    transition: all 1s;
+}
+
+img:active {
+    box-shadow: none;
+}
+
+.save,
+.undelete {
+    background-color: blue;
+
+}
+
+.delete-confirm {
+    background-color: red;
+}
+
+tr:hover,
+tr:active {
+    box-shadow: 4px 5px 12px #030331;
+    transition: all 0.3s;
+}
+
+.cancel,
+.cancel-add {
+    background-color: #ff00d0;
+}
+
+.add-button {
+    background-color: #53b853;
+}
+
+tr:nth-child(odd) {
+    background-color: #2692ba;
+}
+
+.button {
+    grid-column: 4/4;
+}
+
+.add-new-person,
+.container,
+.edit-form {
+    top: 0;
+    display: grid;
+    position: fixed;
+    background-color: hsla(0, 0%, 30%, 0.5);
+    width: 100vw;
+    height: 100vh;
+    /* opacity: 0; */
+}
+
+.card {
+    margin: auto;
+    text-align: center;
+    border: 1rem solid red;
+    border-radius: 6px;
+    max-width: 200px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 0px 3px 40px black;
+    background: #FFFFFF;
+}
+
+.add-new-person.open,
+.container.open,
+.edit-form.open {
+    opacity: 1;
+}
+
+img {
+    max-width: 128px;
+    max-height: 128px;
+    border-radius: 50%;
+    box-shadow: 3px 4px 11px black;
+}
+
+.edit-field {
+    display: grid;
+    margin: auto;
+    max-width: 175px;
+    border: 1rem solid blue;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    box-shadow: inset 1px 1px 7px black;
+}
+
+label {
+    padding-bottom: 0.5rem;
+}
+.edit, .delete {
+    border: none;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-color: #FFFFFF;
+    background-size: cover;
+    text-indent: -9999px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+.edit:hover,
+.delete:hover {
+    opacity: 0.5;
+}
+
+.edit {
+    background-image: url('../icons/edit-icon.png');
+}
+
+.delete {
+    background-image: url('../icons/delete-icon.png');
+}

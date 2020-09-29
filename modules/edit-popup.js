@@ -1,7 +1,7 @@
-import { personData } from './index.js';
-import { removeEditPopup } from './remove-popup.js';
-import { addData } from './script.js';
 import { table } from './elements.js';
+import { personData } from './index.js';
+import { addData } from './script.js';
+import { removeEditPopup } from './remove-popup.js';
 
 export async function editPopup(id) {
     // Find the person by his/her id
