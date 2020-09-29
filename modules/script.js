@@ -1,5 +1,5 @@
-import { table , addButton} from './elements.js';
-import { restoreData, addToLocalStorage } from './index.js';
+import { table , addButton, searchName, searchMonth } from './elements.js';
+import { restoreData, addToLocalStorage, personData } from './index.js';
 import { editPers } from './editing.js';
 import { addPers } from './adding.js';
 import { deletePers } from './deleting.js';
@@ -71,6 +71,35 @@ export async function addData(personData) {
     table.innerHTML = html;
     table.dispatchEvent(new CustomEvent('updateList'));
 }
+
+////////////////////////// SEARCH BAR ///////////////////////////////////////////
+
+// create a search bar
+search.addEventListener('keyup', e => {
+    e.preventDefault();
+    const searchByName = searchName.value.toLowerCase();
+    const filteredPeople = personData.filter(person => {
+        return (
+            person.firstName.toLowerCase().includes(searchByName)
+        );
+    });
+    addData(filteredPeople);
+})
+
+searchMonth.addEventListener('change', e => {
+    e.preventDefault();
+    const searchByMonth = searchMonth.value.toLowerCase();
+    const filterByMonth = personData.filter(person => {
+        const month = new Date(person.birthday).toLocaleString('default', { month: 'long' });
+        return (
+            month.toLowerCase().includes(searchByMonth)
+        );
+    });
+    addData(filterByMonth);
+})
+
+
+
 
 // Event listener
 table.addEventListener('click', deletePers);
