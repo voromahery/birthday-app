@@ -60,7 +60,7 @@ async function addData(personData) {
         // if (dayDiff < 0) {
         //     dayDiff =  dayDiff + 365;
         //  }
-        console.log(dayDiff);
+
         const daysLeft = dayDiff;
         const age = dateNow.getFullYear() - new Date(person.birthday).getFullYear();
         const month = new Date(person.birthday).toLocaleString('default', { month: 'long' });
@@ -90,7 +90,7 @@ async function addData(personData) {
         }
         return date;
     });
-    console.log(time);
+
     // Sort the date by those who have birthday sooner
     const sortBirthdate = await time.sort((a, b) => a.daysLeft - b.daysLeft);
     // Create an html
@@ -165,7 +165,7 @@ async function editPopup(id) {
         </label>
         <div class="buttons">
             <button class="save" type="submit" id=${findPers.id}>Save</button>
-            <button class="cancel" type="button" id=${findPers.id}>cancel</button>
+            <button class="cancel" type="submit" id=${findPers.id}>cancel</button>
         </div>
     </fieldset>
     `;
@@ -200,11 +200,9 @@ async function editPopup(id) {
     };
 
     // If the empty space or the cancel button is clicked
-    const cancelEdit = (e) => {
-        e.preventDefault();
-        const removeForm = e.target.matches('.edit-form');
+    const cancelEdit = e => {
         const cancel = e.target.closest('.cancel');
-
+        const removeForm = e.target.matches('.edit-form');
         if (cancel || removeForm) {
             removeEditPopup(form);
             table.dispatchEvent(new CustomEvent('updateList'));
@@ -309,7 +307,7 @@ async function removeAddPopup(newForm) {
 
 // Add a new person 
 addButton.addEventListener('click', e => {
-    e.preventDefault();
+
     // Create an element to store an html
     const newForm = document.createElement('form');
     newForm.classList.add('add-new-person');
@@ -328,8 +326,8 @@ addButton.addEventListener('click', e => {
              <input type="url" name="picture" id="picture" value="">
          </label>
          <div class="buttons">
-             <button class="add save" type="submit" id="">Save</button>
-             <button class="cancel-add" type="button" id="">cancel</button>
+             <button class="add save" type="submit">Save</button>
+             <button class="cancel-add" type="button">cancel</button>
          </div>
      </fieldset>
      `;
