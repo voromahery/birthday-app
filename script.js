@@ -2,7 +2,8 @@
 const myData = "./people.json";
 const table = document.querySelector('tbody');
 const addButton = document.querySelector('.add-button');
-
+const searchName = document.querySelector('.search-name');
+const searchMonth = document.querySelector('#search-month');
 // Created an empty array to store the data.
 let personData = [];
 
@@ -370,6 +371,31 @@ addButton.addEventListener('click', e => {
     });
 });
 
+//////////////////////// SEARCH BAR ///////////////////////////////////////////////
+
+// create a search bar
+search.addEventListener('keyup', e => {
+    e.preventDefault();
+    const searchByName = searchName.value.toLowerCase();
+    const filteredPeople = personData.filter(person => {
+        return (
+            person.firstName.toLowerCase().includes(searchByName)
+        );
+    });
+    addData(filteredPeople);
+})
+
+searchMonth.addEventListener('change', e => {
+    e.preventDefault();
+    const searchByMonth = searchMonth.value.toLowerCase();
+    const filterByMonth = personData.filter(person => {
+        const month = new Date(person.birthday).toLocaleString('default', { month: 'long' });
+        return (
+            month.toLowerCase().includes(searchByMonth)
+        );
+    });
+    addData(filterByMonth);
+})
 
 // Event listener
 table.addEventListener('click', deletePers);

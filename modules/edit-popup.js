@@ -25,7 +25,7 @@ export async function editPopup(id) {
         </label>
         <div class="buttons">
             <button class="save" type="submit" id=${findPers.id}>Save</button>
-            <button class="cancel" type="submit" id=${findPers.id}>cancel</button>
+            <button class="cancel" id=${findPers.id}>cancel</button>
         </div>
     </fieldset>
     `;
@@ -59,28 +59,19 @@ export async function editPopup(id) {
         }
     };
 
-    // If the empty space or the cancel button is clicked
-    const cancelEdit = (e) => {
-        e.preventDefault();
+     // If the empty space or the cancel button is clicked
+     const cancelEdit = e => {
         const cancel = e.target.closest('.cancel');
-
-        if (cancel) {
+        const removeForm = e.target.matches('.edit-form');
+        if (cancel || removeForm) {
             removeEditPopup(form);
             table.dispatchEvent(new CustomEvent('updateList'));
         }
     };
 
-    const removeForm = e => {
-        const removeForm = e.target.matches('.edit-form');
-        if (removeForm) {
-            removeEditPopup(form);
-        }
-    }
-
     // Add to the body
     document.body.appendChild(form);
     form.classList.add('open');
     form.addEventListener('click', editConfirm);
-    window.addEventListener('submit', cancelEdit);
-    window.addEventListener('click', removeForm);
+    window.addEventListener('click', cancelEdit);
 }
