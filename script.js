@@ -96,7 +96,7 @@ async function addData(personData) {
     const sortBirthdate = await time.sort((a, b) => a.daysLeft - b.daysLeft);
     // Create an html
     const html = await sortBirthdate.map(person => `
-			  <tr>
+			  <tr class="${person.daysLeft === 3 ? 'birthday' : ''}">
                 <td>
                 <img src="${person.picture}" alt="${person.firstName}-avatar" class="rounded-circle">
                 </td>
@@ -374,7 +374,7 @@ addButton.addEventListener('click', e => {
 //////////////////////// SEARCH BAR ///////////////////////////////////////////////
 
 // create a search bar
-search.addEventListener('keyup', e => {
+searchName.addEventListener('keyup', e => {
     e.preventDefault();
     const searchByName = searchName.value.toLowerCase();
     const filteredPeople = personData.filter(person => {

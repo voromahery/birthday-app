@@ -21,6 +21,7 @@ tr {
     grid-gap: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    background-color: #0315b2
 }
 
 button {
@@ -156,12 +157,16 @@ h1 {
     text-align: center;
 }
 
-.search-form {
-    max-width: 1122px;
-    margin: auto;
+.form-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    place-content: space-between;
+    max-width: 1122px;
+    margin: auto;
+}
+
+.search-form {
+    max-width: 350px;
 }
 
 .search-form,
@@ -177,4 +182,10 @@ h1 {
 .search-form input,
 .search-form select {
     max-width: 200px;
+}
+
+
+.birthday,
+.birthday:nth-child(odd) {
+    background-color: black;
 }
