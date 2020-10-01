@@ -70,11 +70,12 @@ async function addData(personData) {
 
         if (monthNumber === dateNow.getMonth()) {
              daysLeft = (days - dateNow.getDate());
-            console.log(dayDiff);
-        } else if (daysLeft < 0) {
-            daysLeft = (dayDiff + 365);
+        } else if (daysLeft < 0 && year === dateNow.getFullYear()) {
+            daysLeft = dayDiff + 365;
+        } else if (year < dateNow.getFullYear()) {
+            daysLeft = (dayDiff + (365 * age)) + 365;
         }
- 
+
         if (days === 1 || days === 21 || days === 31) {
             days = `${days}st`;
         } else if (days === 2 || days === 22) {

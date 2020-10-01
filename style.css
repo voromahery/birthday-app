@@ -105,6 +105,7 @@ tr:nth-child(odd) {
 .container.open,
 .edit-form.open {
     opacity: 1;
+    transition: all 1s;
 }
 
 img {

@@ -1,6 +1,4 @@
 body {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
     background-color: #0315b2;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
@@ -23,6 +21,7 @@ tr {
     grid-gap: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    background-color: #0315b2
 }
 
 button {
@@ -74,7 +73,9 @@ tr:nth-child(odd) {
 }
 
 .button {
-    grid-column: 4/4;
+    grid-column: 2/2;
+    align-self: center;
+    text-align: end;
 }
 
 .add-new-person,
@@ -86,7 +87,6 @@ tr:nth-child(odd) {
     background-color: hsla(0, 0%, 30%, 0.5);
     width: 100vw;
     height: 100vh;
-    /* opacity: 0; */
 }
 
 .card {
@@ -105,6 +105,7 @@ tr:nth-child(odd) {
 .container.open,
 .edit-form.open {
     opacity: 1;
+    transition: all 1s;
 }
 
 img {
@@ -146,9 +147,46 @@ label {
 }
 
 .edit {
-    background-image: url('../icons/edit-icon.png');
+    background-image: url('./icons/edit-icon.png');
 }
 
 .delete {
-    background-image: url('../icons/delete-icon.png');
+    background-image: url('./icons/delete-icon.png');
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    place-content: space-between;
+    max-width: 1122px;
+    margin: auto;
+}
+
+.search-form {
+    max-width: 350px;
+}
+
+.search-form,
+h1 {
+    color: #FFFFFF;
+}
+
+.search-form label {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-form input,
+.search-form select {
+    max-width: 200px;
+}
+
+
+.birthday,
+.birthday:nth-child(odd) {
+    background-color: red;
 }
