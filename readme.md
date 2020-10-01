@@ -34,6 +34,11 @@
 
 - A form is created and then, pushed the value of that form in the empty array so that we can both store it in the local storage and display it on the DOM.
 
+## 5- For searching
+
+- I created a new input and select in the HTML then, I grabbed them to the Javascript.
+- After that, I filtered all the name that has the same character as the input value so that they return what is searched.
+
 ## Any improvement
 
 - I still need to work on the day left until the next birthday because mine gives more than thousand days

@@ -8,16 +8,27 @@ export async function addData(personData) {
     const dateNow = new Date(Date.now());
     const time = personData.map(person => {
         const dateBirthday = new Date(person.birthday);
+        const day = dateBirthday.getDate();
         const timeDiff = Math.abs(dateBirthday.getTime() - dateNow.getTime());
-
+        const dateMiliseconds = dateBirthday.getTime();
+        const dateDiff = dateMiliseconds - dateNow;
+    
         // 1000 * 3600 * 24 millisecond per day
-        let dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-        const daysLeft = dayDiff;
+        let dayDiff = Math.round(dateDiff / (1000 * 3600 * 24));
+        let daysLeft = dayDiff;
         const age = dateNow.getFullYear() - new Date(person.birthday).getFullYear();
         const month = new Date(person.birthday).toLocaleString('default', { month: 'long' });
-
+        const monthNumber = dateBirthday.getMonth();
         let days = new Date(person.birthday).getDate();
+        let year = dateBirthday.getFullYear();
 
+        if (monthNumber === dateNow.getMonth()) {
+             daysLeft = (days - dateNow.getDate());
+            console.log(dayDiff);
+        } else if (daysLeft < 0) {
+            daysLeft = (dayDiff + 365);
+        }
+ 
         if (days === 1 || days === 21 || days === 31) {
             days = `${days}st`;
         } else if (days === 2 || days === 22) {
@@ -46,7 +57,7 @@ export async function addData(personData) {
     const sortBirthdate = await time.sort((a, b) => a.daysLeft - b.daysLeft);
     // Create an html
     const html = await sortBirthdate.map(person => `
-			  <tr>
+			  <tr class="${person.daysLeft === 0 ? 'birthday' : ''}">
                 <td>
                 <img src="${person.picture}" alt="${person.firstName}-avatar" class="rounded-circle">
                 </td>

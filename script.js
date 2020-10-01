@@ -54,20 +54,27 @@ async function addData(personData) {
     const dateNow = new Date(Date.now());
     const time = personData.map(person => {
         const dateBirthday = new Date(person.birthday);
+        const day = dateBirthday.getDate();
         const timeDiff = Math.abs(dateBirthday.getTime() - dateNow.getTime());
-
+        const dateMiliseconds = dateBirthday.getTime();
+        const dateDiff = dateMiliseconds - dateNow;
+    
         // 1000 * 3600 * 24 millisecond per day
-        let dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-        // if (dayDiff < 0) {
-        //     dayDiff =  dayDiff + 365;
-        //  }
-
-        const daysLeft = dayDiff;
+        let dayDiff = Math.round(dateDiff / (1000 * 3600 * 24));
+        let daysLeft = dayDiff;
         const age = dateNow.getFullYear() - new Date(person.birthday).getFullYear();
         const month = new Date(person.birthday).toLocaleString('default', { month: 'long' });
-
+        const monthNumber = dateBirthday.getMonth();
         let days = new Date(person.birthday).getDate();
+        let year = dateBirthday.getFullYear();
 
+        if (monthNumber === dateNow.getMonth()) {
+             daysLeft = (days - dateNow.getDate());
+            console.log(dayDiff);
+        } else if (daysLeft < 0) {
+            daysLeft = (dayDiff + 365);
+        }
+ 
         if (days === 1 || days === 21 || days === 31) {
             days = `${days}st`;
         } else if (days === 2 || days === 22) {
@@ -96,7 +103,7 @@ async function addData(personData) {
     const sortBirthdate = await time.sort((a, b) => a.daysLeft - b.daysLeft);
     // Create an html
     const html = await sortBirthdate.map(person => `
-			  <tr class="${person.daysLeft === 3 ? 'birthday' : ''}">
+			  <tr class="${person.daysLeft === 0 ? 'birthday' : ''}">
                 <td>
                 <img src="${person.picture}" alt="${person.firstName}-avatar" class="rounded-circle">
                 </td>
@@ -159,7 +166,7 @@ async function editPopup(id) {
             <input type="text" name="lastname" id="lastname" value="${findPers.lastName}">
         </label>
         <label for="birthday">Birthday
-            <input type="text" name="birthday" id="birthday" value="${(new Date(findPers.birthday)).getDate()}-${new Date(findPers.birthday).toLocaleString('default', { month: 'long' })}-${(new Date(findPers.birthday)).getFullYear()}">
+            <input type="date" name="birthday" id="birthday" value="${(new Date(findPers.birthday)).getDate()}/${new Date(findPers.birthday).toLocaleString('default', { month: 'long' })}/${(new Date(findPers.birthday)).getFullYear()}">
         </label>
         <label for="picture">Picture
             <input type="url" name="picture" id="picture" value="${findPers.picture}">

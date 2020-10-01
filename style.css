@@ -187,5 +187,5 @@ h1 {
 
 .birthday,
 .birthday:nth-child(odd) {
-    background-color: black;
+    background-color: red;
 }
