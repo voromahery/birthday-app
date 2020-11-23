@@ -50,55 +50,102 @@ fetchData();
 
 //////////////////////////////////////// EDIT A PERSON ///////////////////////////////////////////////////////
 
-async function addData(personData) {
-    const dateNow = new Date(Date.now());
-    const time = personData.map(person => {
-        const dateBirthday = new Date(person.birthday);
-        const day = dateBirthday.getDate();
-        const timeDiff = Math.abs(dateBirthday.getTime() - dateNow.getTime());
-        const dateMiliseconds = dateBirthday.getTime();
-        const dateDiff = dateMiliseconds - dateNow;
+// async function addData(personData) {
+    // const dateNow = new Date(Date.now());
+    // const time = personData.map(person => {
+    //     const dateBirthday = new Date(person.birthday);
+    //     const day = dateBirthday.getDate();
+    //     const timeDiff = Math.abs(dateBirthday.getTime() - dateNow.getTime());
+    //     const dateMiliseconds = dateBirthday.getTime();
+    //     const dateDiff = dateMiliseconds - dateNow;
     
-        // 1000 * 3600 * 24 millisecond per day
-        let dayDiff = Math.round(dateDiff / (1000 * 3600 * 24));
-        let daysLeft = dayDiff;
-        const age = dateNow.getFullYear() - new Date(person.birthday).getFullYear();
-        const month = new Date(person.birthday).toLocaleString('default', { month: 'long' });
-        const monthNumber = dateBirthday.getMonth();
-        let days = new Date(person.birthday).getDate();
-        let year = dateBirthday.getFullYear();
+    //     // 1000 * 3600 * 24 millisecond per day
+    //     let dayDiff = Math.round(dateDiff / (1000 * 3600 * 24));
+    //     let daysLeft = dayDiff;
+    //     const age = dateNow.getFullYear() - new Date(person.birthday).getFullYear();
+    //     const month = new Date(person.birthday).toLocaleString('default', { month: 'long' });
+    //     const monthNumber = dateBirthday.getMonth();
+    //     let days = new Date(person.birthday).getDate();
+    //     let year = dateBirthday.getFullYear();
 
-        if (monthNumber === dateNow.getMonth()) {
-             daysLeft = (days - dateNow.getDate());
-        } else if (daysLeft < 0 && year === dateNow.getFullYear()) {
-            daysLeft = dayDiff + 365;
-        } else if (year < dateNow.getFullYear()) {
-            daysLeft = (dayDiff + (365 * age)) + 365;
-        }
+    //     if (monthNumber === dateNow.getMonth()) {
+    //          daysLeft = (days - dateNow.getDate());
+    //     } else if (daysLeft < 0 && year === dateNow.getFullYear()) {
+    //         daysLeft = dayDiff + 365;
+    //     } else if (year < dateNow.getFullYear()) {
+    //         daysLeft = (dayDiff + (365 * age)) + 365;
+    //     }
 
-        if (days === 1 || days === 21 || days === 31) {
-            days = `${days}st`;
-        } else if (days === 2 || days === 22) {
-            days = `${days}nd`;
-        } else if (days === 3 || days === 23) {
-            days = `${days}rd`;
-        } else {
-            days = `${days}th`;
-        };
+    //     if (days === 1 || days === 21 || days === 31) {
+    //         days = `${days}st`;
+    //     } else if (days === 2 || days === 22) {
+    //         days = `${days}nd`;
+    //     } else if (days === 3 || days === 23) {
+    //         days = `${days}rd`;
+    //     } else {
+    //         days = `${days}th`;
+    //     };
 
-        const date = {
-            picture: person.picture,
-            firstName: person.firstName,
-            lastName: person.lastName,
-            birthday: person.birthday,
-            id: person.id,
-            month: month,
-            age: age,
-            days: days,
-            daysLeft: daysLeft,
-        }
-        return date;
-    });
+    //     const date = {
+    //         picture: person.picture,
+    //         firstName: person.firstName,
+    //         lastName: person.lastName,
+    //         birthday: person.birthday,
+    //         id: person.id,
+    //         month: month,
+    //         age: age,
+    //         days: days,
+    //         daysLeft: daysLeft,
+    //     }
+    //     return date;
+    async function addData(personData) {
+        let currentYear = new Date().getFullYear();
+        const dateNow = Date.now();
+        const time = personData.map(person => {
+            const birthDateMonth = new Date(person.birthday).getMonth();
+            const birthDateDay = new Date(person.birthday).getDay();
+            const date = `${(birthDateMonth + 1)}/${birthDateDay + 1}/${currentYear}`;
+            const dateTime = new Date(`${date}`);
+            const dateMiliseconds = dateTime.getTime();
+            const dateDiff = dateMiliseconds - dateNow;
+            let daysToGo = Math.round(dateDiff / (1000 * 60 * 60 * 24));
+            if (daysToGo < 0) {
+                daysToGo = daysToGo + 365;
+            }
+            const birthday = person.birthday;
+            const arr = date.split("/");
+            const monthIndex = parseInt(arr[0], 10) - 1;
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const birthMonths = monthNames[monthIndex];
+            const diff = (Math.round((dateNow - birthday) / (1000 * 60 * 60 * 24 * 365)));
+    
+            // let days = new Date(person.birthday).getDate();
+    
+            // if (days === 1 || days === 21 || days === 31) {
+            //     days = `${days}st`;
+            // } else if (days === 2 || days === 22) {
+            //     days = `${days}nd`;
+            // } else if (days === 3 || days === 23) {
+            //     days = `${days}rd`;
+            // } else {
+            //     days = `${days}th`;
+            // };
+    
+            const persons = {
+                firstName: person.firstName,
+                lastName: person.lastName,
+                id: person.id,
+                birthday: person.birthday,
+                daysLeft: daysToGo,
+                picture: person.picture,
+                age: diff,
+                month: birthMonths,
+                birthDate: arr[1],
+            }
+            return persons
+        })
+    
+    // };
 
     // Sort the date by those who have birthday sooner
     const sortBirthdate = await time.sort((a, b) => a.daysLeft - b.daysLeft);
@@ -112,7 +159,7 @@ async function addData(personData) {
                     <h3>${person.firstName}</h3>
                     Turns ${person.age}
                      on ${person.month}
-                     ${person.days} 
+                     ${person.birthDate} 
                 </td>
                 <td>
                     <h3>${person.daysLeft}<br> Days</h3>
@@ -360,7 +407,7 @@ addButton.addEventListener('click', e => {
 
         // Add the new person to the Array: personData
         personData.push(myPerson);
-        console.log(personData);
+        console.log(myPerson.birthday);
 
         addData(personData);
         table.dispatchEvent(new CustomEvent('updateList'));
