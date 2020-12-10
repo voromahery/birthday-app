@@ -3,9 +3,9 @@
   margin-bottom: 42px;
 }
 
-.form-container,
 .search-form {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -30,11 +30,22 @@
   height: 50px;
 }
 
+.search-form input,
+.search-form select {
+    max-width: 249px;
+}
+
+.search-form input {
+    padding-left: 20px;
+}
+
 .add-button {
   background: #ef4565;
   height: unset;
-  padding-top: 17px;
-  padding-bottom: 17px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 18px;
+  padding-right: 11px;
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;

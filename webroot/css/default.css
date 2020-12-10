@@ -1,10 +1,11 @@
 body {
   margin: auto;
-  background-color: #D8EEFE;
+  background-color: #d8eefe;
 }
 
-*, body {
-  font-family: 'Rubik';
+*,
+body {
+  font-family: "Rubik";
 }
 
 .table,
@@ -14,6 +15,13 @@ h1 {
   margin: auto;
 }
 
+h1 {
+  font-weight: bold;
+  line-height: 76px;
+  font-size: 32px;
+  color: #094067;
+}
+
 img,
 input,
 select {
@@ -21,11 +29,23 @@ select {
 }
 
 img {
-    border-radius: 5px;
-    max-width: 100px;
-    /* min-width: 70px; */
+  border-radius: 5px;
+  max-width: 100px;
+  /* min-width: 70px; */
 }
 
 figure {
   margin: 0;
+}
+
+@media (min-width: 300px) {
+  h1 {
+    font-size: 42px;
+  }
+}
+
+@media (min-width: 600px) {
+  h1 {
+    font-size: 64px;
+  }
 }
