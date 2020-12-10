@@ -1,0 +1,76 @@
+.data {
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding-left: calc(43px / 4);
+  padding-right: calc(23px / 4);
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.days-remaining,
+.person-name,
+.birthdate {
+    margin: 0;
+}
+
+
+.person-name {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 43px;
+  color: #000000;
+}
+
+.birthdate,
+.days-remaining {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 28px;
+  color: #5f6c7b;
+}
+
+.person-age {
+  color: #ef4565;
+}
+
+@media (min-width: 300px) {
+  .person-name {
+    font-size: 24px;
+  }
+
+  .birthdate,
+  .days-remaining {
+    font-size: 18px;
+  }
+
+  .card {
+    padding-left: calc(43px / 2);
+    padding-right: calc(23px / 2);
+  }
+}
+
+@media (min-width: 650px) {
+  .person-name {
+    font-size: 36px;
+  }
+
+  .birthdate,
+  .days-remaining {
+    font-size: 24px;
+  }
+
+  .card {
+    padding-left: 43px;
+    padding-right: 23px;
+  }
+}

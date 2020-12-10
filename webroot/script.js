@@ -1,6 +1,6 @@
 // Grab all necessary elements and files
 const myData = "./people.json";
-const table = document.querySelector("tbody");
+const table = document.querySelector(".data");
 const addButton = document.querySelector(".add-button");
 const searchName = document.querySelector(".search-name");
 const searchMonth = document.querySelector("#search-month");
@@ -119,30 +119,22 @@ async function addData(personData) {
   const html = await sortBirthdate
     .map(
       (person) => `
-			  <tr class="${person.daysLeft === 0 ? "birthday" : ""}">
-                <td>
-                <img src="${person.picture}" alt="${
-        person.firstName
-      }-avatar" class="rounded-circle">
-                </td>
-                <td>
-                    <h3>${person.firstName}</h3>
-                    Turns ${person.age}
-                     on ${person.month}
-                     ${person.birthDate} 
-                </td>
-                <td>
-                    <h3>${person.daysLeft}<br> ${
-        person.daysLeft === 0 || person.daysLeft === 1 ? "Day" : "Days"
-      }</h3>
-                </td>
-                <td>
-                    <button class="edit" id=${person.id}>Edit</button>
-                </td>
-                <td>
-                    <button class="delete" id=${person.id}>Delete</button>
-                </td>
-			  </tr>
+			  <div class="${person.daysLeft === 0 ? "birthday" : "card"}">
+          <figure>
+            <img src="${person.picture}" alt="${person.firstName}-avatar" class="rounded-circle">
+          </figure>
+          <div>
+            <h3 class="person-name">${person.firstName}</h3>
+                    <p class="birthdate">Turns <span class="person-age">${person.age}</span> on ${person.month} ${person.birthDate}<p> 
+          </div>
+          <div>
+            <p class="days-remaining">In ${person.daysLeft} ${person.daysLeft === 0 || person.daysLeft === 1 ? "day" : "days"}</p>
+            <div>
+              <button class="edit" id=${person.id}>Edit</button>
+              <button class="delete" id=${person.id}>Delete</button>
+            </div>
+          </div>
+			  </div>
     `
     )
     .join("");

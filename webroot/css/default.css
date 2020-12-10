@@ -1,0 +1,22 @@
+body {
+  font-family: 'Rubik';
+  margin: auto;
+  max-width: 779px;
+  background-color: #D8EEFE;
+}
+
+img,
+input,
+select {
+  width: 100%;
+}
+
+img {
+    border-radius: 5px;
+    max-width: 100px;
+    /* min-width: 70px; */
+}
+
+figure {
+  margin: 0;
+}
