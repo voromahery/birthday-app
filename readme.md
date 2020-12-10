@@ -41,7 +41,7 @@
 
 ## Any improvement
 
-- I still need to work on the day left until the next birthday because mine gives more than thousand days
+
 
 ## Most challenging part
 

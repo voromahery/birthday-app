@@ -86,7 +86,6 @@ async function addData(personData) {
     const birthMonths = monthNames[monthIndex];
     // const diff = (Math.round((dateNow - birthday) / (1000 * 60 * 60 * 24 * 365)));
     const ages = actualDate.getFullYear() - new Date(birthday).getFullYear();
-
     const persons = {
       firstName: person.firstName,
       lastName: person.lastName,
