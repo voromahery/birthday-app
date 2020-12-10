@@ -10,13 +10,13 @@
 }
 
 .edit-field {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     margin: auto;
-    max-width: 175px;
-    border: 1rem solid blue;
+    border: none;
     border-radius: 6px;
     background-color: #ffffff;
-    box-shadow: inset 1px 1px 7px black;
   }
   
   .delete-card {
@@ -28,6 +28,22 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
     box-shadow: 0px 3px 40px black;
-    background: #ffffff;
+    background-color: #ffffff;
   }
   
+  .edit-field input {
+    height: 50px;
+    background: #d8eefe;
+    border-radius: 5px;
+    max-width: 100%;
+    border: none;
+    max-width: 264px;
+  }
+  
+
+  .edit-field label {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #094067;
+  }
