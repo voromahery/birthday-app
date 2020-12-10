@@ -5,6 +5,11 @@
 }
 
 .card {
+  background-color: #ffffff;
+}
+
+.card,
+.birthday {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -15,6 +20,10 @@
   padding-right: calc(23px / 4);
   padding-top: 8px;
   padding-bottom: 8px;
+}
+
+.birthday {
+  background-color: pink;
 }
 
 .days-remaining,

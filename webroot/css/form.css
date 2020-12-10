@@ -1,0 +1,42 @@
+.form-container {
+  margin-top: 42px;
+  margin-bottom: 42px;
+}
+
+.form-container,
+.search-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-form {
+  width: 100%;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+/* form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+} */
+
+.search-form select,
+.search-form input,
+.add-button {
+  background: #fffffe;
+  border-radius: 5px;
+  border: none;
+  height: 50px;
+}
+
+.add-button {
+  background: #ef4565;
+  height: unset;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #fffffe;
+}

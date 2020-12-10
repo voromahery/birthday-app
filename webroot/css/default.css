@@ -1,8 +1,17 @@
 body {
-  font-family: 'Rubik';
   margin: auto;
-  max-width: 779px;
   background-color: #D8EEFE;
+}
+
+*, body {
+  font-family: 'Rubik';
+}
+
+.table,
+.form-container,
+h1 {
+  max-width: 779px;
+  margin: auto;
 }
 
 img,

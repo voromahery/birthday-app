@@ -283,7 +283,7 @@ async function deleteId(id) {
   container.classList.add("container");
 
   const html = `
-        <div class="card">
+        <div class="delete-card">
             <h3>Are you sure that you want to delete ${findPers.firstName}?</h3>
         <div>
             <button class="delete-confirm">Yes</button>

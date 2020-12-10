@@ -1,0 +1,33 @@
+.add-new-person,
+.container,
+.edit-form {
+  top: 0;
+  display: grid;
+  position: fixed;
+  background-color: hsla(0, 0%, 30%, 0.5);
+  width: 100vw;
+  height: 100vh;
+}
+
+.edit-field {
+    display: grid;
+    margin: auto;
+    max-width: 175px;
+    border: 1rem solid blue;
+    border-radius: 6px;
+    background-color: #ffffff;
+    box-shadow: inset 1px 1px 7px black;
+  }
+  
+  .delete-card {
+    margin: auto;
+    text-align: center;
+    border: 1rem solid red;
+    border-radius: 6px;
+    max-width: 200px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 0px 3px 40px black;
+    background: #ffffff;
+  }
+  
