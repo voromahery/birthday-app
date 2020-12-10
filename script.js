@@ -85,6 +85,17 @@ async function addData(personData) {
     ];
     const birthMonths = monthNames[monthIndex];
     // const diff = (Math.round((dateNow - birthday) / (1000 * 60 * 60 * 24 * 365)));
+    let birthDate = "";
+    if (arr[1] == 1 || arr[1] == 21 || arr[1] == 31) {
+      birthDate = `${arr[1]}st`;
+    } else if (arr[1] == 2 || arr[1] == 22) {
+      birthDate = `${arr[1]}nd`;
+    } else if (arr[1] == 3) {
+      birthDate = `${arr[1]}rd`;
+    } else {
+      birthDate = `${arr[1]}th`;
+    }
+
     const ages = actualDate.getFullYear() - new Date(birthday).getFullYear();
 
     console.log(actualDate, new Date(birthday).getFullYear());
@@ -97,7 +108,7 @@ async function addData(personData) {
       picture: person.picture,
       age: ages,
       month: birthMonths,
-      birthDate: arr[1],
+      birthDate: birthDate,
     };
     return persons;
   });
