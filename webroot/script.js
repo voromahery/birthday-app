@@ -55,6 +55,7 @@ async function addData(personData) {
   let currentYear = new Date().getFullYear();
   const dateNow = Date.now();
   const actualDate = new Date(Date.now());
+
   const time = personData.map((person) => {
     const birthDateMonth = new Date(person.birthday).getMonth();
     const birthDateDay = new Date(person.birthday).getDate();
@@ -182,35 +183,36 @@ async function editPopup(id) {
   form.classList.add("edit-form");
   const formHtml = `
     <fieldset class="edit-field">
+    <img src="./icons/clear.svg" class="clear" alt="clear-icon" />
+    <div class="edit-field-wrapper">
     <h2 class="person-name">Edit ${findPers.firstName} ${findPers.lastName}</h2>
-        <label for="first-name">First name
+        <label for="first-name">First name </label>
             <input type="text" name="firstname" id="firstname" value="${
               findPers.firstName
             }">
-        </label>
-        <label for="last-name">Last names
+        <label for="last-name">Last names</label>
             <input type="text" name="lastname" id="lastname" value="${
               findPers.lastName
             }">
-        </label>
-        <label for="birthday">Birthday
+        <label for="birthday">Birthday</label>
             <input type="date" name="birthday" id="birthday" value="${new Date(
               findPers.birthday
             ).getDate()}/${new Date(findPers.birthday).toLocaleString(
     "default",
     { month: "long" }
   )}/${new Date(findPers.birthday).getFullYear()}">
-        </label>
-        <label for="picture">Picture
+        <label for="picture">Picture</label>
             <input type="url" name="picture" id="picture" value="${
               findPers.picture
             }">
-        </label>
         <div class="buttons">
-            <button class="save" type="submit" id=${findPers.id}>Save changes</button>
+            <button class="save" type="submit" id=${
+              findPers.id
+            }>Save changes</button>
             <button class="cancel" type="submit" id=${
               findPers.id
             }>cancel</button>
+        </div>
         </div>
     </fieldset>
     `;
@@ -246,7 +248,7 @@ async function editPopup(id) {
 
   // If the empty space or the cancel button is clicked
   const cancelEdit = (e) => {
-    const cancel = e.target.closest(".cancel");
+    const cancel = e.target.closest(".cancel") || e.target.matches(".clear");
     const removeForm = e.target.matches(".edit-form");
     if (cancel || removeForm) {
       removeEditPopup(form);
@@ -295,7 +297,7 @@ async function deleteId(id) {
 
   const html = `
         <div class="delete-card">
-            <h3>Are you sure that you want to delete ${findPers.firstName}?</h3>
+            <h3 class="confirmation">Are you sure that you want to delete ${findPers.firstName}?</h3>
         <div>
             <button class="delete-confirm">Yes</button>
             <button class="undelete">No</button>

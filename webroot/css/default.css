@@ -16,11 +16,17 @@ h1 {
 }
 
 h1,
-.person-name {
+.person-name,
+.confirmation {
   font-weight: bold;
   line-height: 76px;
   font-size: 32px;
   color: #094067;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
 }
 
 img,
@@ -41,14 +47,16 @@ figure {
 
 @media (min-width: 300px) {
   h1,
-  .person-name {
+  .person-name,
+  .confirmation {
     font-size: 42px;
   }
 }
 
 @media (min-width: 600px) {
   h1,
-  .person-name {
+  .person-name,
+  .confirmation {
     font-size: 64px;
   }
 }

@@ -6,6 +6,7 @@
 .search-form,
 .buttons {
   display: flex;
+  gap: 16px;
   flex-wrap: wrap;
   justify-content: space-between;
 }
@@ -38,8 +39,9 @@
 
 .add-button,
 .save,
-.cancel {
-  background: #ef4565;
+.cancel,
+.delete-confirm,
+.undelete {
   height: unset;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -48,22 +50,29 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
+}
+
+.delete-confirm,
+.save {
+  background: #ef4565;
   color: #fffffe;
 }
 
 .save,
-.cancel {
+.cancel,
+.undelete,
+.delete-confirm {
   width: 158px;
   max-height: 50px;
   margin-top: 29px;
 }
 
+.undelete,
 .cancel {
   color: #5f6c7b;
   background-color: #ffffff;
   border: 2px solid #5f6c7b;
   box-sizing: border-box;
-  border-radius: 5px;
 }
 
 .edit-field {
@@ -74,12 +83,6 @@
 .edit-field label {
   display: flex;
   flex-direction: column;
-}
-
-.edit-field label,
-.buttons {
-  /* max-width: 500px; */
-  /* margin: auto; */
 }
 
 .person.name {
