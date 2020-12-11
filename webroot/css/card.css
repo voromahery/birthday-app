@@ -8,12 +8,33 @@
   background-color: #ffffff;
 }
 
+.icons-container,
 .card,
 .birthday {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   justify-content: space-between;
+}
+
+.edit,
+.delete {
+  max-width: 27px;
+}
+
+.edit,
+.delete,
+button {
+  cursor: pointer;
+}
+.icons-container {
+  align-items: flex-end;
+  margin-top: calc(38px / 2);
+  max-width: 90px;
+}
+
+.card,
+.birthday {
+  align-items: center;
+  flex-wrap: wrap;
   background-color: #ffffff;
   border-radius: 5px;
   padding-left: calc(43px / 4);
@@ -29,9 +50,12 @@
 .days-remaining,
 .person-name,
 .birthdate {
-    margin: 0;
+  margin: 0;
 }
 
+.days-remaining {
+  margin-bottom: calc(38px / 2);
+}
 
 .person-name {
   font-weight: 500;

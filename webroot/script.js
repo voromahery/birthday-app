@@ -121,17 +121,27 @@ async function addData(personData) {
       (person) => `
 			  <div class="${person.daysLeft === 0 ? "birthday" : "card"}">
           <figure>
-            <img src="${person.picture}" alt="${person.firstName}-avatar" class="rounded-circle">
+            <img src="${person.picture}" alt="${
+        person.firstName
+      }-avatar" class="rounded-circle">
           </figure>
           <div>
             <h3 class="person-name">${person.firstName}</h3>
-                    <p class="birthdate">Turns <span class="person-age">${person.age}</span> on ${person.month} ${person.birthDate}<p> 
+                    <p class="birthdate">Turns <span class="person-age">${
+                      person.age
+                    }</span> on ${person.month} ${person.birthDate}<p> 
           </div>
           <div>
-            <p class="days-remaining">In ${person.daysLeft} ${person.daysLeft === 0 || person.daysLeft === 1 ? "day" : "days"}</p>
-            <div>
-              <button class="edit" id=${person.id}>Edit</button>
-              <button class="delete" id=${person.id}>Delete</button>
+            <p class="days-remaining">In ${person.daysLeft} ${
+        person.daysLeft === 0 || person.daysLeft === 1 ? "day" : "days"
+      }</p>
+            <div class="icons-container">
+            <img src="./icons/edit-icon.svg" class="edit" id=${
+              person.id
+            } alt="blue-icon">
+        <img src="./icons/delete-icon.svg" class="delete" id=${
+          person.id
+        } alt="red-icon">
             </div>
           </div>
 			  </div>
@@ -172,12 +182,13 @@ async function editPopup(id) {
   form.classList.add("edit-form");
   const formHtml = `
     <fieldset class="edit-field">
+    <h2 class="person-name">Edit ${findPers.firstName} ${findPers.lastName}</h2>
         <label for="first-name">First name
             <input type="text" name="firstname" id="firstname" value="${
               findPers.firstName
             }">
         </label>
-        <label for="last-name">Last name
+        <label for="last-name">Last names
             <input type="text" name="lastname" id="lastname" value="${
               findPers.lastName
             }">
@@ -196,7 +207,7 @@ async function editPopup(id) {
             }">
         </label>
         <div class="buttons">
-            <button class="save" type="submit" id=${findPers.id}>Save</button>
+            <button class="save" type="submit" id=${findPers.id}>Save changes</button>
             <button class="cancel" type="submit" id=${
               findPers.id
             }>cancel</button>

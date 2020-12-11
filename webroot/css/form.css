@@ -3,7 +3,8 @@
   margin-bottom: 42px;
 }
 
-.search-form {
+.search-form,
+.buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -15,15 +16,10 @@
   gap: 16px;
 }
 
-/* form {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-} */
-
 .search-form select,
 .search-form input,
-.add-button {
+.add-button,
+.save {
   background: #fffffe;
   border-radius: 5px;
   border: none;
@@ -40,7 +36,9 @@
   max-width: -webkit-fill-available;
 }
 
-.add-button {
+.add-button,
+.save,
+.cancel {
   background: #ef4565;
   height: unset;
   padding-top: 15px;
@@ -51,4 +49,39 @@
   font-size: 18px;
   line-height: 21px;
   color: #fffffe;
+}
+
+.save,
+.cancel {
+  width: 158px;
+  max-height: 50px;
+  margin-top: 29px;
+}
+
+.cancel {
+  color: #5f6c7b;
+  background-color: #ffffff;
+  border: 2px solid #5f6c7b;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.edit-field {
+  width: 100%;
+  max-width: 470px;
+}
+
+.edit-field label {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-field label,
+.buttons {
+  /* max-width: 500px; */
+  /* margin: auto; */
+}
+
+.person.name {
+  color: #094067;
 }
