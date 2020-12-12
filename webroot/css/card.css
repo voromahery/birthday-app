@@ -92,7 +92,7 @@ button {
   }
 }
 
-@media (min-width: 650px) {
+@media (min-width: 600px) {
   .person-name {
     font-size: 36px;
   }
@@ -102,8 +102,17 @@ button {
     font-size: 24px;
   }
 
-  .card {
+  .card,
+  .birthday {
     padding-left: 43px;
     padding-right: 23px;
   }
+
+  .icons-container {
+    margin-left: auto;
+  }
+
+  /* .birthday .icons-container {
+    margin-left: 0;
+  } */
 }
