@@ -112,14 +112,22 @@ async function addData(personData) {
     return persons;
   });
 
-  // };
-
   // Sort the date by those who have birthday sooner
   const sortBirthdate = await time.sort((a, b) => a.daysLeft - b.daysLeft);
   // Create an html
   const html = await sortBirthdate
-    .map(
-      (person) => `
+    .map((person) => {
+      let dayLeft = "";
+      if (person.daysLeft === 1) {
+        dayLeft = `In ${person.daysLeft} day`;
+      }
+      if (person.daysLeft === 0) {
+        dayLeft = `Happy birthday ${person.firstName}`;
+      }
+      if (person.daysLeft > 1) {
+        dayLeft = `In ${person.daysLeft} days`;
+      }
+      return `
 			  <div class="${person.daysLeft === 0 ? "birthday" : "card"}">
           <figure>
             <img src="${person.picture}" alt="${
@@ -133,9 +141,7 @@ async function addData(personData) {
                     }</span> on ${person.month} ${person.birthDate}<p> 
           </div>
           <div>
-            <p class="days-remaining">In ${person.daysLeft} ${
-        person.daysLeft === 0 || person.daysLeft === 1 ? "day" : "days"
-      }</p>
+            <p class="days-remaining">${dayLeft}</p>
             <div class="icons-container">
             <img src="./icons/edit-icon.svg" class="edit" id=${
               person.id
@@ -146,8 +152,8 @@ async function addData(personData) {
             </div>
           </div>
 			  </div>
-    `
-    )
+    `;
+    })
     .join("");
   // Insert it into the DOM
   table.innerHTML = html;
