@@ -28,11 +28,11 @@
 
 .search-form input,
 .search-form select {
+  padding-left: 20px;
   max-width: 249px;
 }
 
 .search-form input {
-  padding-left: 20px;
   max-width: -webkit-fill-available;
 }
 
