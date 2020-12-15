@@ -43,6 +43,7 @@
   background: #d8eefe;
   border-radius: 5px;
   max-width: 445px;
+  max-width: -webkit-fill-available;
   border: none;
 }
 
