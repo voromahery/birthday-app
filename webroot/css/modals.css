@@ -12,7 +12,7 @@
 .edit-field {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
   margin: auto;
   border: none;
   border-radius: 5px;
@@ -33,16 +33,16 @@
 
 .delete-card div {
   display: flex;
-  gap: 16px;
+  gap: 8px;
   max-width: 300px;
   margin: auto;
 }
 
 .edit-field input {
-  height: 50px;
+  height: 36px;
   background: #d8eefe;
   border-radius: 5px;
-  max-width: 100%;
+  max-width: 445px;
   border: none;
 }
 
@@ -63,4 +63,17 @@
   max-width: 29px;
   align-self: flex-end;
   cursor: pointer;
+}
+
+@media (min-width: 300px) {
+  .edit-field input {
+    height: 50px;
+  }
+  .edit-field {
+    gap: 16px;
+  }
+
+  .delete-card div {
+    gap: 16px;
+  }
 }

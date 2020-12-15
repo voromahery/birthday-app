@@ -23,12 +23,11 @@
   background: #fffffe;
   border-radius: 5px;
   border: none;
-  height: 50px;
+  height: 36px;
 }
 
 .search-form input,
 .search-form select {
-  padding-left: 20px;
   max-width: 249px;
 }
 
@@ -40,14 +39,15 @@
 .save,
 .cancel,
 .delete-confirm,
-.undelete {
+.undelete,
+.cancel-add {
+  font-size: 14px;
   height: unset;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 18px;
-  padding-right: 11px;
+  padding-top: calc(15px / 2);
+  padding-bottom: calc(15px / 2);
+  padding-left: calc(18px / 2);
+  padding-right: calc(11px / 2);
   font-weight: 500;
-  font-size: 18px;
   line-height: 21px;
 }
 
@@ -61,14 +61,17 @@
 .save,
 .cancel,
 .undelete,
-.delete-confirm {
-  width: 158px;
-  max-height: 50px;
-  margin-top: 29px;
+.delete-confirm,
+.cancel-add {
+  width: 100%;
+  max-width: 158px;
+  max-height: 36px;
+  margin-top: calc(29px / 2);
 }
 
 .undelete,
-.cancel {
+.cancel,
+.cancel-add {
   color: #5f6c7b;
   background-color: #ffffff;
   border: 2px solid #5f6c7b;
@@ -87,4 +90,42 @@
 
 .person.name {
   color: #094067;
+}
+
+@media (min-width: 300px) {
+  .add-button,
+  .save,
+  .cancel,
+  .delete-confirm,
+  .undelete,
+  .cancel-add {
+    font-size: 18px;
+    height: unset;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 18px;
+    padding-right: 11px;
+  }
+
+  .search-form select,
+  .search-form input,
+  .save {
+    height: 50px;
+  }
+
+  .save,
+  .cancel,
+  .undelete,
+  .delete-confirm,
+  .cancel-add {
+    max-height: 50px;
+  }
+
+  .save,
+  .cancel,
+  .undelete,
+  .delete-confirm,
+  .cancel-add {
+    margin-top: 29px;
+  }
 }
