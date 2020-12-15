@@ -28,6 +28,7 @@
 .search-form input,
 .search-form select {
   max-width: 249px;
+  height: 25px;
 }
 
 .search-form input {
