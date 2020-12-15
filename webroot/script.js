@@ -303,10 +303,14 @@ async function deleteId(id) {
 
   const html = `
         <div class="delete-card">
+          <div class="clear-wrapper">
+            <img src="./icons/clear.svg" class="clear" alt="clear-icon" />
+          </div>
             <h3 class="confirmation">Are you sure that you want to delete ${findPers.firstName}?</h3>
-        <div>
-            <button class="delete-confirm">Yes</button>
-            <button class="undelete">No</button>
+            <div>
+              <button class="delete-confirm">Yes</button>
+              <button class="undelete">No</button>
+            </div>
         </div>
         `;
 
@@ -331,8 +335,9 @@ async function deleteId(id) {
     // If no and the empty space are clicked
     const remove = e.target.matches(".container");
     const cancelButton = e.target.matches(".undelete");
+    const clearIcon = e.target.closest(".clear");
 
-    if (cancelButton || remove) {
+    if (cancelButton || remove || clearIcon) {
       removeDeletePopup(container);
       table.dispatchEvent(new CustomEvent("updateList"));
     }
@@ -364,6 +369,7 @@ addButton.addEventListener("click", (e) => {
   newForm.classList.add("add-new-person");
   const newFormHtml = `
      <fieldset class="edit-field">
+     <img src="./icons/clear.svg" class="clear" alt="clear-icon" />
          <label for="first-name">First name
              <input type="text" name="firstname" id="firstname" value="">
          </label>
@@ -402,8 +408,6 @@ addButton.addEventListener("click", (e) => {
 
     // Add the new person to the Array: personData
     personData.push(myPerson);
-    console.log(myPerson.birthday);
-
     addData(personData);
     table.dispatchEvent(new CustomEvent("updateList"));
     removeAddPopup(newForm);
@@ -413,9 +417,9 @@ addButton.addEventListener("click", (e) => {
   window.addEventListener("click", (e) => {
     const removeForm = e.target.matches(".add-new-person");
     const cancelAdd = e.target.closest(".cancel-add");
-    if (cancelAdd || removeForm) {
+    const clearIcon = e.target.closest(".clear");
+    if (cancelAdd || removeForm || clearIcon) {
       removeAddPopup(newForm);
-      console.log("cancelled");
     }
   });
 });
