@@ -193,7 +193,7 @@ async function editPopup(id) {
     <div class="edit-field-wrapper">
     <h2 class="person-name">Edit ${findPers.firstName} ${findPers.lastName}</h2>
         <label for="first-name">First name </label>
-            <input type="text" name="firstname" id="firstname" value="${
+            <input type="text" name="firstname" id="firstname" placeholder="First Name" value="${
               findPers.firstName
             }">
         <label for="last-name">Last names</label>
