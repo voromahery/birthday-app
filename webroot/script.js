@@ -307,7 +307,7 @@ async function deleteId(id) {
             <img src="./icons/clear.svg" class="clear" alt="clear-icon" />
           </div>
             <h3 class="confirmation">Are you sure that you want to delete ${findPers.firstName}?</h3>
-            <div>
+            <div class="buttons">
               <button class="delete-confirm">Yes</button>
               <button class="undelete">No</button>
             </div>

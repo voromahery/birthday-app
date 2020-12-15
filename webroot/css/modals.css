@@ -31,10 +31,10 @@
   background-color: #ffffff;
 }
 
-.delete-card div {
+.delete-card .buttons {
   display: flex;
   gap: 8px;
-  max-width: 300px;
+  max-width: 340px;
   margin: auto;
 }
 
@@ -67,6 +67,7 @@
 }
 
 .clear-wrapper {
+  max-width: 29px;
   margin-right: 0;
   margin-left: auto;
 }
