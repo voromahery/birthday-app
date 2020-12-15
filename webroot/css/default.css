@@ -48,7 +48,6 @@ select {
 img {
   border-radius: 5px;
   max-width: 100px;
-  /* min-width: 70px; */
 }
 
 figure {
