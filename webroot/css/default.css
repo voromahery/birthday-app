@@ -15,7 +15,8 @@ body {
   font-family: "Rubik";
 }
 
-input, select {
+input,
+select {
   padding-left: 10px;
 }
 
@@ -27,10 +28,10 @@ h1 {
 }
 
 h1,
-.person-name,
+.edit-field .person-name,
 .confirmation {
   font-weight: bold;
-  font-size: 32px;
+  font-size: 30px;
   color: #094067;
 }
 
@@ -59,22 +60,24 @@ figure {
     padding-top: calc(64px / 2);
     padding-bottom: calc(64px / 2);
   }
-input, select {
-  padding-left: 20px;
-}
+
+  input,
+  select {
+    padding-left: 20px;
+  }
 
   h1,
-  .person-name,
+  .edit-field .person-name,
   .confirmation {
     font-size: 42px;
   }
 }
 
 @media (min-width: 600px) {
-body {
-  padding-top: 64px;
-  padding-bottom: 64px;
-}
+  body {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
 
   h1,
   .person-name,
