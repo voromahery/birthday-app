@@ -7,13 +7,14 @@
 .buttons {
   display: flex;
   gap: 16px;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: space-between;
 }
 
 .search-form {
   width: 100%;
   align-items: flex-end;
+  flex-wrap: wrap;
   gap: 16px;
 }
 
@@ -63,12 +64,12 @@
 .delete-confirm:hover,
 .save:hover,
 .add-button:hover {
-  transition: all ease-in .2s;
+  transition: all ease-in 0.2s;
 }
 
 .delete-confirm:hover,
 .save:hover,
-.add-button:hover{
+.add-button:hover {
   background-color: #a4122b;
 }
 
@@ -93,7 +94,7 @@
 
 .edit-field {
   width: 100%;
-  max-width: 470px;
+  max-width: 1079px;
 }
 
 .edit-field label {
@@ -129,7 +130,7 @@
   .undelete,
   .delete-confirm,
   .cancel-add {
-    max-height:fit-content;
+    max-height: fit-content;
   }
 
   .save,

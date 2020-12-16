@@ -118,15 +118,20 @@ async function addData(personData) {
   const html = await sortBirthdate
     .map((person) => {
       let dayLeft = "";
+      let daysIndicator = "";
       if (person.daysLeft === 1) {
         dayLeft = `In ${person.daysLeft} day`;
+        daysIndicator = `tomorrow`;
       }
       if (person.daysLeft === 0) {
         dayLeft = `Happy birthday ${person.firstName}`;
+        daysIndicator = `today`;
       }
       if (person.daysLeft > 1) {
         dayLeft = `In ${person.daysLeft} days`;
+        daysIndicator = `on ${person.month} ${person.birthDate}`;
       }
+
       return `
 			  <div class="${person.daysLeft === 0 ? "birthday" : "card"}">
           <figure>
@@ -138,7 +143,7 @@ async function addData(personData) {
             <h3 class="person-name">${person.firstName}</h3>
                     <p class="birthdate">Turns <span class="person-age">${
                       person.age
-                    }</span> on ${person.month} ${person.birthDate}<p> 
+                    }</span> ${daysIndicator}<p> 
           </div>
           <div>
             <p class="days-remaining">${dayLeft}</p>
@@ -370,6 +375,7 @@ addButton.addEventListener("click", (e) => {
   const newFormHtml = `
      <fieldset class="edit-field">
      <img src="./icons/clear.svg" class="clear" alt="clear-icon" />
+     <div>
          <label for="first-name">First name
              <input type="text" name="firstname" id="firstname" value="">
          </label>
@@ -385,6 +391,7 @@ addButton.addEventListener("click", (e) => {
          <div class="buttons">
              <button class="add save" type="submit">Save</button>
              <button class="cancel-add" type="button">cancel</button>
+         </div>
          </div>
      </fieldset>
      `;
