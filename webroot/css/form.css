@@ -63,7 +63,13 @@
 .add-button,
 .delete-confirm:hover,
 .save:hover,
-.add-button:hover {
+.add-button:hover,
+.undelete:hover,
+.cancel:hover,
+.cancel-add:hover,
+.undelete,
+.cancel,
+.cancel-add {
   transition: all ease-in 0.2s;
 }
 
@@ -88,8 +94,23 @@
 .cancel-add {
   color: #5f6c7b;
   background-color: #ffffff;
-  border: 2px solid #5f6c7b;
   box-sizing: border-box;
+}
+
+.undelete:hover,
+.cancel:hover,
+.cancel-add:hover,
+.undelete,
+.cancel,
+.cancel-add {
+  border: 2px solid #5f6c7b;
+}
+
+.undelete:hover,
+.cancel:hover,
+.cancel-add:hover {
+  color: #FFFFFF;
+  background-color: #5f6c7b;
 }
 
 .edit-field {
