@@ -375,7 +375,7 @@ addButton.addEventListener("click", (e) => {
   const newFormHtml = `
      <fieldset class="edit-field">
      <img src="./icons/clear.svg" class="clear" alt="clear-icon" />
-     <div>
+     <div class="add-wrapper">
          <label for="first-name">First name
              <input type="text" name="firstname" id="firstname" value="">
          </label>

@@ -71,6 +71,12 @@
   margin-left: auto;
 }
 
+.add-wrapper {
+  max-width: 365px;
+    align-self: center;
+    width: inherit;
+}
+
 @media (min-width: 300px) {
   .edit-field input {
     height: 50px;
