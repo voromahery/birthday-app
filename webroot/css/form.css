@@ -7,8 +7,12 @@
 .buttons {
   display: flex;
   gap: 16px;
-  /* flex-wrap: wrap; */
   justify-content: space-between;
+}
+
+::placeholder,
+select {
+  color: #5F6C7B;
 }
 
 .search-form {
@@ -37,6 +41,7 @@
 }
 
 .search-form label {
+  color: #094067;
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;

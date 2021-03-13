@@ -27,11 +27,6 @@ h1 {
   margin: auto;
 }
 
-::placeholder,
-select {
-  color: #5F6C7B;
-}
-
 h1,
 .edit-field .person-name,
 .confirmation {
