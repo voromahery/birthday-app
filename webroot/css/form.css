@@ -36,6 +36,12 @@
   max-width: -webkit-fill-available;
 }
 
+.search-form label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
 .add-button,
 .save,
 .cancel,
@@ -109,7 +115,7 @@
 .undelete:hover,
 .cancel:hover,
 .cancel-add:hover {
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: #5f6c7b;
 }
 
@@ -134,11 +140,19 @@
   .delete-confirm,
   .undelete,
   .cancel-add {
-    font-size: 18px;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 18px;
     padding-right: 11px;
+  }
+  .add-button,
+  .save,
+  .cancel,
+  .delete-confirm,
+  .undelete,
+  .cancel-add,
+  .search-form label {
+    font-size: 18px;
   }
 
   .search-form select,
