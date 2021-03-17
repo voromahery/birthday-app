@@ -4,6 +4,11 @@ const table = document.querySelector(".data");
 const addButton = document.querySelector(".add-button");
 const searchName = document.querySelector(".search-name");
 const searchMonth = document.querySelector("#search-month");
+const dateToday = new Date(Date.now());
+
+const dateString = new Date().toISOString().substr(0, 19).replace('T', ' ');
+
+console.log(dateToday, dateString);
 // Created an empty array to store the data.
 let personData = [];
 
@@ -383,7 +388,7 @@ addButton.addEventListener("click", (e) => {
              <input type="text" name="lastname" id="lastname" value="">
          </label>
          <label for="birthday">Birthday
-             <input type="date" name="birthday" id="birthday" value="">
+             <input type="date" name="birthday" id="birthday" min="1900-01-01" max="${dateToday.getFullYear()}-${dateToday.getMonth()}-${dateToday.getDay()}" value="">
          </label>
          <label for="picture">Picture
              <input type="url" name="picture" id="picture" value="">
