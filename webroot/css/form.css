@@ -11,8 +11,22 @@
 }
 
 ::placeholder,
+select,
+.edit-form input,
+.add-new-person input {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.edit-form input,
+.add-new-person input {
+  color: #094067;
+}
+
+::placeholder,
 select {
-  color: #5F6C7B;
+  color: #5f6c7b;
 }
 
 .search-form {
@@ -150,6 +164,11 @@ select {
     padding-left: 18px;
     padding-right: 11px;
   }
+
+  ::placeholder,
+  select,
+  .edit-form input,
+  .add-new-person input,
   .add-button,
   .save,
   .cancel,
