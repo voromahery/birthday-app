@@ -211,12 +211,7 @@ async function editPopup(id) {
               findPers.lastName
             }">
         <label for="birthday">Birthday</label>
-            <input type="date" name="birthday" id="birthday" value="${new Date(
-              findPers.birthday
-            ).getDate()}/${new Date(findPers.birthday).toLocaleString(
-    "default",
-    { month: "long" }
-  )}/${new Date(findPers.birthday).getFullYear()}">
+            <input type="date" name="birthday" id="birthday" value="${new Date(findPers.birthday).toISOString().split('T')[0]}">
         <label for="picture">Picture</label>
             <input type="url" name="picture" id="picture" value="${
               findPers.picture
