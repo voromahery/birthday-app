@@ -4,13 +4,13 @@ const table = document.querySelector(".data");
 const addButton = document.querySelector(".add-button");
 const searchName = document.querySelector(".search-name");
 const searchMonth = document.querySelector("#search-month");
+
+// Convert the date into two digits month and day
 const dateToday = new Date(Date.now());
-const dateMax =
-  dateToday.getFullYear() +
-  "-" +
-  ("0" + (dateToday.getMonth() + 1)).slice(-2) +
-  "-" +
-  ("0" + dateToday.getDate()).slice(-2);
+const dateMax = `${dateToday.getFullYear()}-${(
+  "0" +
+  (dateToday.getMonth() + 1)
+).slice(-2)}-${("0" + dateToday.getDate()).slice(-2)}`;
 
 console.log(dateMax);
 // Created an empty array to store the data.
@@ -121,9 +121,9 @@ async function addData(personData) {
   });
 
   // Sort the date by those who have birthday sooner
-  const sortBirthdate = await time.sort((a, b) => a.daysLeft - b.daysLeft);
+  const sortBirthdate = time.sort((a, b) => a.daysLeft - b.daysLeft);
   // Create an html
-  const html = await sortBirthdate
+  const html = sortBirthdate
     .map((person) => {
       let dayLeft = "";
       let daysIndicator = "";
@@ -215,8 +215,8 @@ async function editPopup(id) {
             }">
         <label for="birthday">Birthday</label>
             <input type="date" name="birthday" id="birthday" max="${dateMax}" value="${
-              new Date(findPers.birthday).toISOString().split("T")[0]
-            }">
+    new Date(findPers.birthday).toISOString().split("T")[0]
+  }">
         <label for="picture">Picture</label>
             <input type="url" name="picture" id="picture" value="${
               findPers.picture
