@@ -13,8 +13,18 @@ main {
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none;       /* Remove default arrow */
-  background-image: url("../icons/arrow.svg");   /* Add custom arrow */
+  appearance: none; /* Remove default arrow */
+  background-image: url("../icons/arrow.svg");
+  background-position-y: center;
+  background-position-x: 90%;
+  background-repeat: no-repeat;
+  padding-right: 20px;
+}
+
+select,
+input[type="date"],
+::-webkit-calendar-picker-indicator {
+  cursor: pointer;
 }
 
 *,
@@ -25,10 +35,6 @@ body {
 ul {
   list-style: none;
   padding: 0;
-}
-
-select {
-  cursor: pointer;
 }
 
 input,
@@ -80,6 +86,10 @@ figure {
   input,
   select {
     padding-left: 20px;
+  }
+
+  select {
+    padding-right: 60px;
   }
 
   h1,

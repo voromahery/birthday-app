@@ -25,7 +25,7 @@ select {
 .search-form select,
 .search-form input,
 .save {
-  background: #fffffe;
+  background-color: #fffffe;
   border-radius: 5px;
   border: none;
 }
@@ -33,7 +33,7 @@ select {
 .search-form input,
 .search-form select {
   max-width: 249px;
-  height: 25px;
+  height: 40px;
 }
 
 .search-form input {
