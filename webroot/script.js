@@ -5,10 +5,14 @@ const addButton = document.querySelector(".add-button");
 const searchName = document.querySelector(".search-name");
 const searchMonth = document.querySelector("#search-month");
 const dateToday = new Date(Date.now());
+const dateMax =
+  dateToday.getFullYear() +
+  "-" +
+  ("0" + (dateToday.getMonth() + 1)).slice(-2) +
+  "-" +
+  ("0" + dateToday.getDate()).slice(-2);
 
-const dateString = new Date().toISOString().substr(0, 19).replace('T', ' ');
-
-console.log(dateToday, dateString);
+console.log(dateMax);
 // Created an empty array to store the data.
 let personData = [];
 
@@ -90,7 +94,6 @@ async function addData(personData) {
       "December",
     ];
     const birthMonths = monthNames[monthIndex];
-    // const diff = (Math.round((dateNow - birthday) / (1000 * 60 * 60 * 24 * 365)));
 
     let birthDate = "";
     if (arr[1] == 1 || arr[1] == 21 || arr[1] == 31) {
@@ -211,7 +214,9 @@ async function editPopup(id) {
               findPers.lastName
             }">
         <label for="birthday">Birthday</label>
-            <input type="date" name="birthday" id="birthday" value="${new Date(findPers.birthday).toISOString().split('T')[0]}">
+            <input type="date" name="birthday" id="birthday" max="${dateMax}" value="${
+              new Date(findPers.birthday).toISOString().split("T")[0]
+            }">
         <label for="picture">Picture</label>
             <input type="url" name="picture" id="picture" value="${
               findPers.picture
@@ -383,7 +388,7 @@ addButton.addEventListener("click", (e) => {
              <input type="text" name="lastname" id="lastname" value="">
          </label>
          <label for="birthday">Birthday
-             <input type="date" name="birthday" id="birthday" min="1900-01-01" max="${dateToday.getFullYear()}-${dateToday.getMonth()}-${dateToday.getDay()}" value="">
+             <input type="date" name="birthday" id="birthday" max="${dateMax}" value="">
          </label>
          <label for="picture">Picture
              <input type="url" name="picture" id="picture" value="">

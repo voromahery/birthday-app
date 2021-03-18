@@ -27,6 +27,10 @@ ul {
   padding: 0;
 }
 
+select {
+  cursor: pointer;
+}
+
 input,
 select {
   padding-left: 10px;
