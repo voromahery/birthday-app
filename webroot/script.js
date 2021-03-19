@@ -132,7 +132,7 @@ async function addData(personData) {
         daysIndicator = `tomorrow`;
       }
       if (person.daysLeft === 0) {
-        dayLeft = `🎂🎂 Happy birthday ${person.firstName} 🎂🎂`;
+        dayLeft = `Happy birthday ${person.firstName}`;
         daysIndicator = `today`;
       }
       if (person.daysLeft > 1) {
@@ -438,29 +438,26 @@ addButton.addEventListener("click", (e) => {
 
 //////////////////////// SEARCH BAR ///////////////////////////////////////////////
 
-// create a search bar
-searchName.addEventListener("keyup", (e) => {
-  e.preventDefault();
+const filterData = () => {
   const searchByName = searchName.value.toLowerCase();
+  const searchByMonth = searchMonth.value.toLowerCase();
   const filteredPeople = personData.filter((person) => {
     return person.firstName.toLowerCase().includes(searchByName);
   });
-  addData(filteredPeople);
-});
 
-searchMonth.addEventListener("change", (e) => {
-  e.preventDefault();
-  const searchByMonth = searchMonth.value.toLowerCase();
-  const filterByMonth = personData.filter((person) => {
+  const filterByMonth = filteredPeople.filter((person) => {
     const month = new Date(person.birthday).toLocaleString("default", {
       month: "long",
     });
     return month.toLowerCase().includes(searchByMonth);
   });
   addData(filterByMonth);
-});
+};
 
 // Event listener
+searchName.addEventListener("keyup", filterData);
+searchMonth.addEventListener("change", filterData);
+
 table.addEventListener("click", deletePers);
 table.addEventListener("click", editPers);
 
