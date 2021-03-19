@@ -42,7 +42,6 @@
 ## Any improvement
 
 
-
 ## Most challenging part
 
 - Counting the day left of the person until the next birthday is the most challenging and also sorting it.

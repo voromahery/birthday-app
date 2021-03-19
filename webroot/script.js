@@ -68,7 +68,7 @@ async function addData(personData) {
   const time = personData.map((person) => {
     const birthDateMonth = new Date(person.birthday).getMonth();
     const birthDateDay = new Date(person.birthday).getDate();
-    const date = `${birthDateMonth + 1}/${birthDateDay}/${currentYear}`;
+    const date = `${birthDateMonth + 1}/${birthDateDay + 1}/${currentYear}`;
     const dateTime = new Date(`${date}`);
     const dateMiliseconds = dateTime.getTime();
     const dateDiff = dateMiliseconds - dateNow;
@@ -132,7 +132,7 @@ async function addData(personData) {
         daysIndicator = `tomorrow`;
       }
       if (person.daysLeft === 0) {
-        dayLeft = `Happy birthday ${person.firstName}`;
+        dayLeft = `🎂🎂 Happy birthday ${person.firstName} 🎂🎂`;
         daysIndicator = `today`;
       }
       if (person.daysLeft > 1) {
