@@ -12,7 +12,6 @@ const dateMax = `${dateToday.getFullYear()}-${(
   (dateToday.getMonth() + 1)
 ).slice(-2)}-${("0" + dateToday.getDate()).slice(-2)}`;
 
-console.log(dateMax);
 // Created an empty array to store the data.
 let personData = [];
 
@@ -239,7 +238,6 @@ async function editPopup(id) {
     const confirm = e.target.closest(".save");
     if (confirm) {
       const formData = e.currentTarget;
-      console.log("form", formData);
       removeEditPopup(form);
       e.preventDefault();
 
@@ -338,7 +336,6 @@ async function deleteId(id) {
       personData = personId;
       addData(personId);
       removeDeletePopup(container);
-      console.log(personId);
       table.dispatchEvent(new CustomEvent("updateList"));
     }
 
