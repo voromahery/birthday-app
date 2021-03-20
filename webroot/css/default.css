@@ -28,7 +28,17 @@ input[type="date"],
 }
 
 ::-webkit-calendar-picker-indicator {
-padding-right: 20px;
+  padding-right: 20px;
+  color: inherit;
+}
+
+::-webkit-calendar-picker-indicator:hover {
+  transform: scale(1.1);
+}
+
+::-webkit-calendar-picker-indicator:hover,
+::-webkit-calendar-picker-indicator {
+  transition: all ease-in 0.2s;
 }
 
 *,

@@ -67,7 +67,7 @@ async function addData(personData) {
   const time = personData.map((person) => {
     const birthDateMonth = new Date(person.birthday).getMonth();
     const birthDateDay = new Date(person.birthday).getDate();
-    const date = `${birthDateMonth + 1}/${birthDateDay + 1}/${currentYear}`;
+    const date = `${birthDateMonth + 1}/${birthDateDay}/${currentYear}`;
     const dateTime = new Date(`${date}`);
     const dateMiliseconds = dateTime.getTime();
     const dateDiff = dateMiliseconds - dateNow;
