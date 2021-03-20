@@ -131,7 +131,7 @@ async function addData(personData) {
         daysIndicator = `tomorrow`;
       }
       if (person.daysLeft === 0) {
-        dayLeft = `Happy birthday ${person.firstName}`;
+        dayLeft = `🎂🎂 Happy birthday ${person.firstName} 🎂🎂`;
         daysIndicator = `today`;
       }
       if (person.daysLeft > 1) {
@@ -204,22 +204,25 @@ async function editPopup(id) {
     <img src="./icons/clear.svg" class="clear" alt="clear-icon" />
     <div class="edit-field-wrapper">
     <h2 class="person-name">Edit ${findPers.firstName} ${findPers.lastName}</h2>
-        <label for="first-name">First name </label>
+        <label for="first-name">First name 
             <input type="text" name="firstname" id="firstname" placeholder="First Name" value="${
               findPers.firstName
             }">
+        </label>
         <label for="last-name">Last names</label>
             <input type="text" name="lastname" id="lastname" value="${
               findPers.lastName
             }">
-        <label for="birthday">Birthday</label>
+        <label for="birthday">Birthday
             <input type="date" name="birthday" id="birthday" max="${dateMax}" value="${
             new Date(findPers.birthday).toISOString().split("T")[0]
             }">
-        <label for="picture">Picture</label>
+        </label>
+        <label for="picture">Picture
             <input type="url" name="picture" id="picture" value="${
               findPers.picture
             }">
+        </label>
         <div class="buttons">
             <button class="save" type="submit" id=${
               findPers.id
