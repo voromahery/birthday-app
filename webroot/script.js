@@ -214,8 +214,8 @@ async function editPopup(id) {
             }">
         <label for="birthday">Birthday</label>
             <input type="date" name="birthday" id="birthday" max="${dateMax}" value="${
-    new Date(findPers.birthday).toISOString().split("T")[0]
-  }">
+            new Date(findPers.birthday).toISOString().split("T")[0]
+            }">
         <label for="picture">Picture</label>
             <input type="url" name="picture" id="picture" value="${
               findPers.picture
@@ -379,16 +379,16 @@ addButton.addEventListener("click", (e) => {
      <img src="./icons/clear.svg" class="clear" alt="clear-icon" />
      <div class="add-wrapper">
          <label for="first-name">First name
-             <input type="text" name="firstname" id="firstname" value="">
+             <input type="text" name="firstname" id="firstname" value="" required>
          </label>
          <label for="last-name">Last name
-             <input type="text" name="lastname" id="lastname" value="">
+             <input type="text" name="lastname" id="lastname" value="" required>
          </label>
          <label for="birthday">Birthday
-             <input type="date" name="birthday" id="birthday" max="${dateMax}" value="">
+             <input type="date" name="birthday" id="birthday" max="${dateMax}" value="" required>
          </label>
          <label for="picture">Picture
-             <input type="url" name="picture" id="picture" value="">
+             <input type="url" name="picture" id="picture" value="" required>
          </label>
          <div class="buttons">
              <button class="add save" type="submit">Save</button>
