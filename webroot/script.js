@@ -1,12 +1,11 @@
 // Grab all necessary elements and files
 const myData = "./people.json";
 const table = document.querySelector(".data");
-const searchForm = document.querySelector(".search-form");
 const addButton = document.querySelector(".add-button");
 const searchName = document.querySelector(".search-name");
 const searchMonth = document.querySelector("#search-month");
-const resetFilter = document.querySelector(".reset-filter");
 const body = document.body;
+
 // Convert the date into two digits month and day
 const dateToday = new Date(Date.now());
 const dateMax = `${dateToday.getFullYear()}-${(
@@ -473,11 +472,6 @@ const filterData = () => {
   });
   addData(filterByMonth);
 };
-
-resetFilter.addEventListener("click", (e) => {
-  e.preventDefault();
-  searchForm.reset();
-});
 
 // Event listener
 searchName.addEventListener("keyup", filterData);
