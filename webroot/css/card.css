@@ -50,12 +50,15 @@ button {
   padding-bottom: 8px;
 }
 
-.card:hover {
+.card:hover,
+.birthday:hover {
   box-shadow: 2px 2px 7px black;
 }
 
 .card,
-.card:hover {
+.card:hover,
+.birthday,
+.birthday:hover {
   transition: all ease-in .2s;
 }
 
