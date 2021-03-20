@@ -82,7 +82,7 @@ async function addData(personData) {
     const dateTime = new Date(`${date}`);
     const dateMiliseconds = dateTime.getTime();
     const dateDiff = dateMiliseconds - dateNow;
-    let daysToGo = Math.round(dateDiff / (1000 * 60 * 60 * 24));
+    let daysToGo = Math.round(dateDiff / (1000 * 60 * 60 * 24) + 1);
     if (daysToGo < 0) {
       daysToGo = daysToGo + 365;
     }
