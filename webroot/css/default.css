@@ -64,6 +64,7 @@ input,
 select,
 button {
   outline: inherit;
+  outline: transparent;
 }
 
 .table,

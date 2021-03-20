@@ -26,7 +26,11 @@ select,
 .add-new-person input {
   font-weight: 500;
   font-size: 16px;
-  line-height: 21px;
+}
+
+::-moz-placeholder {
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .edit-form input,
