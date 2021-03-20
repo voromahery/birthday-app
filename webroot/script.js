@@ -1,10 +1,12 @@
 // Grab all necessary elements and files
 const myData = "./people.json";
 const table = document.querySelector(".data");
+const searchForm = document.querySelector(".search-form");
 const addButton = document.querySelector(".add-button");
 const searchName = document.querySelector(".search-name");
 const searchMonth = document.querySelector("#search-month");
-
+const resetFilter = document.querySelector(".reset-filter");
+const body = document.body;
 // Convert the date into two digits month and day
 const dateToday = new Date(Date.now());
 const dateMax = `${dateToday.getFullYear()}-${(
@@ -57,6 +59,14 @@ async function fetchData() {
 
 fetchData();
 
+function hideScrollBar() {
+  body.style.overflowY = "hidden";
+}
+
+function showScrollBar() {
+  body.style.overflowY = "visible";
+}
+
 //////////////////////////////////////// EDIT A PERSON ///////////////////////////////////////////////////////
 
 async function addData(personData) {
@@ -96,13 +106,13 @@ async function addData(personData) {
 
     let birthDate = "";
     if (arr[1] == 1 || arr[1] == 21 || arr[1] == 31) {
-      birthDate = `${arr[1]}st`;
+      birthDate = `${arr[1]}<sup>st</sup>`;
     } else if (arr[1] == 2 || arr[1] == 22) {
-      birthDate = `${arr[1]}nd`;
+      birthDate = `${arr[1]}<sup>nd</sup>`;
     } else if (arr[1] == 3) {
-      birthDate = `${arr[1]}rd`;
+      birthDate = `${arr[1]}<sup>rd</sup>`;
     } else {
-      birthDate = `${arr[1]}th`;
+      birthDate = `${arr[1]}<sup>th</sup>`;
     }
     const ages = actualDate.getFullYear() - new Date(birthday).getFullYear();
     const persons = {
@@ -215,8 +225,8 @@ async function editPopup(id) {
             }">
         <label for="birthday">Birthday
             <input type="date" name="birthday" id="birthday" max="${dateMax}" value="${
-            new Date(findPers.birthday).toISOString().split("T")[0]
-            }">
+    new Date(findPers.birthday).toISOString().split("T")[0]
+  }">
         </label>
         <label for="picture">Picture
             <input type="url" name="picture" id="picture" value="${
@@ -235,6 +245,8 @@ async function editPopup(id) {
     </fieldset>
     `;
   form.innerHTML = formHtml;
+
+  hideScrollBar();
 
   // If save is clicked
   const editConfirm = (e) => {
@@ -260,6 +272,7 @@ async function editPopup(id) {
 
       addData(personData);
       table.dispatchEvent(new CustomEvent("updateList"));
+      showScrollBar();
     }
   };
 
@@ -270,11 +283,12 @@ async function editPopup(id) {
     if (cancel || removeForm) {
       removeEditPopup(form);
       table.dispatchEvent(new CustomEvent("updateList"));
+      showScrollBar();
     }
   };
 
   // Add to the body
-  document.body.appendChild(form);
+  body.appendChild(form);
   form.classList.add("open");
   form.addEventListener("click", editConfirm);
   window.addEventListener("click", cancelEdit);
@@ -330,6 +344,7 @@ async function deleteId(id) {
   // Add to the body
   document.body.appendChild(container);
   container.classList.add("open");
+  hideScrollBar();
 
   async function deleteConfirmation(e) {
     // If yes is clicked.
@@ -340,6 +355,7 @@ async function deleteId(id) {
       addData(personId);
       removeDeletePopup(container);
       table.dispatchEvent(new CustomEvent("updateList"));
+      showScrollBar();
     }
 
     // If no and the empty space are clicked
@@ -350,6 +366,7 @@ async function deleteId(id) {
     if (cancelButton || remove || clearIcon) {
       removeDeletePopup(container);
       table.dispatchEvent(new CustomEvent("updateList"));
+      showScrollBar();
     }
   }
 
@@ -404,6 +421,7 @@ addButton.addEventListener("click", (e) => {
   // Add to the body
   document.body.appendChild(newForm);
   newForm.classList.add("open");
+  hideScrollBar()
 
   // Add an event for the newForm
   newForm.addEventListener("submit", (e) => {
@@ -432,6 +450,7 @@ addButton.addEventListener("click", (e) => {
     const clearIcon = e.target.closest(".clear");
     if (cancelAdd || removeForm || clearIcon) {
       removeAddPopup(newForm);
+      showScrollBar()
     }
   });
 });
@@ -453,6 +472,11 @@ const filterData = () => {
   });
   addData(filterByMonth);
 };
+
+resetFilter.addEventListener("click", (e) => {
+  e.preventDefault();
+  searchForm.reset();
+});
 
 // Event listener
 searchName.addEventListener("keyup", filterData);
