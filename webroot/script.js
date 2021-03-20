@@ -14,6 +14,15 @@ const dateMax = `${dateToday.getFullYear()}-${(
   (dateToday.getMonth() + 1)
 ).slice(-2)}-${("0" + dateToday.getDate()).slice(-2)}`;
 
+// Styling the scroll
+function hideScrollBar() {
+  body.style.overflowY = "hidden";
+}
+
+function showScrollBar() {
+  body.style.overflowY = "visible";
+}
+
 // Created an empty array to store the data.
 let personData = [];
 
@@ -58,14 +67,6 @@ async function fetchData() {
 }
 
 fetchData();
-
-function hideScrollBar() {
-  body.style.overflowY = "hidden";
-}
-
-function showScrollBar() {
-  body.style.overflowY = "visible";
-}
 
 //////////////////////////////////////// EDIT A PERSON ///////////////////////////////////////////////////////
 
@@ -421,7 +422,7 @@ addButton.addEventListener("click", (e) => {
   // Add to the body
   document.body.appendChild(newForm);
   newForm.classList.add("open");
-  hideScrollBar()
+  hideScrollBar();
 
   // Add an event for the newForm
   newForm.addEventListener("submit", (e) => {
@@ -450,7 +451,7 @@ addButton.addEventListener("click", (e) => {
     const clearIcon = e.target.closest(".clear");
     if (cancelAdd || removeForm || clearIcon) {
       removeAddPopup(newForm);
-      showScrollBar()
+      showScrollBar();
     }
   });
 });
