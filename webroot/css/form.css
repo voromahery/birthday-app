@@ -60,7 +60,7 @@ select {
 }
 
 input {
-  width: calc(100% - 10px);
+  width: calc(100% - 20px);
 }
 
 .search-form label {
@@ -161,7 +161,7 @@ button:hover {
   }
 
   input {
-    width: calc(100% - 20px);
+    width: calc(100% - 40px);
   }
 
   ::placeholder,
