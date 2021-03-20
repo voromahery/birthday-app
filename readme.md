@@ -1,6 +1,4 @@
-# Term 3 JS Project : Birthday App
-
-- In a few sentences, explain the structure of your project.
+# Birthday App
 
 ## Structure of the project
 
