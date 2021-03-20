@@ -46,12 +46,11 @@ select {
 
 .search-form input,
 .search-form select {
-  max-width: 249px;
   height: 40px;
 }
 
-.search-form input {
-  max-width: -webkit-fill-available;
+input {
+  width: calc(100% - 10px);
 }
 
 .search-form label {
@@ -59,14 +58,10 @@ select {
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
+  max-width: 380px;
 }
 
-.add-button,
-.save,
-.cancel,
-.delete-confirm,
-.undelete,
-.cancel-add {
+button {
   font-size: 14px;
   padding-top: calc(15px / 2);
   padding-bottom: calc(15px / 2);
@@ -83,18 +78,8 @@ select {
   color: #fffffe;
 }
 
-.delete-confirm,
-.save,
-.add-button,
-.delete-confirm:hover,
-.save:hover,
-.add-button:hover,
-.undelete:hover,
-.cancel:hover,
-.cancel-add:hover,
-.undelete,
-.cancel,
-.cancel-add {
+button,
+button:hover {
   transition: all ease-in 0.2s;
 }
 
@@ -153,28 +138,25 @@ select {
 }
 
 @media (min-width: 300px) {
-  .add-button,
-  .save,
-  .cancel,
-  .delete-confirm,
-  .undelete,
-  .cancel-add {
+  button {
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 18px;
     padding-right: 11px;
   }
 
+  .search-form {
+    gap: 35px;
+  }
+
+  input {
+    width: calc(100% - 20px);
+  }
+
   ::placeholder,
   select,
-  .edit-form input,
-  .add-new-person input,
-  .add-button,
-  .save,
-  .cancel,
-  .delete-confirm,
-  .undelete,
-  .cancel-add,
+  input,
+  button,
   .search-form label {
     font-size: 18px;
   }
@@ -190,13 +172,13 @@ select {
   .delete-confirm,
   .cancel-add {
     max-height: fit-content;
-  }
-
-  .save,
-  .cancel,
-  .undelete,
-  .delete-confirm,
-  .cancel-add {
     margin-top: 29px;
+  }
+}
+
+@media (min-width: 650px) {
+  .search-form label {
+    flex-basis: 35%;
+    max-width: 100%;
   }
 }
