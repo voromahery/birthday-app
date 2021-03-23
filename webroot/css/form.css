@@ -114,7 +114,6 @@ button:hover {
 .delete-confirm,
 .cancel-add {
   width: 100%;
-  max-width: 158px;
   margin-top: calc(29px / 2);
 }
 
