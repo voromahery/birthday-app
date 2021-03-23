@@ -21,6 +21,7 @@ label {
 
 ::placeholder {
   color: #5f6c7b;
+  opacity: 1;
 }
 
 ::placeholder,
@@ -35,6 +36,7 @@ select,
   font-weight: 500;
   font-size: 16px;
   color: #5f6c7b;
+  opacity: 1;
 }
 
 .edit-form input,
