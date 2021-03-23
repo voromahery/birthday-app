@@ -151,16 +151,18 @@ async function addData(personData) {
 
       return `
 			  <div class="${person.daysLeft === 0 ? "birthday" : "card"}">
-          <figure>
-            <img src="${person.picture}" alt="${
-        person.firstName
-      }-avatar" class="rounded-circle">
-          </figure>
+          <div class="wrapper">
+            <figure>
+              <img src="${person.picture}" alt="${
+              person.firstName
+              }-avatar" class="rounded-circle">
+            </figure>
           <div>
-            <h3 class="person-name">${person.firstName}</h3>
-                    <p class="birthdate">Turns <span class="person-age">${
-                      person.age
-                    }</span> ${daysIndicator}<p> 
+          <h3 class="person-name">${person.firstName}</h3>
+                  <p class="birthdate">Turns <span class="person-age">${
+                    person.age
+                  }</span> ${daysIndicator}<p> 
+        </div>
           </div>
           <div>
             <p class="days-remaining">${dayLeft}</p>

@@ -21,7 +21,7 @@ label {
 }
 
 ::placeholder {
-  color: #5F6C7B;
+  color: #5f6c7b;
 }
 
 ::placeholder,
@@ -35,7 +35,7 @@ select,
 ::-moz-placeholder {
   font-weight: 500;
   font-size: 16px;
-  color: #5F6C7B;
+  color: #5f6c7b;
 }
 
 .edit-form input,
@@ -169,6 +169,10 @@ button:hover {
     gap: 35px;
   }
 
+  .search-form label {
+    flex-basis: calc(100% - 35px);
+  }
+
   input {
     width: calc(100% - 40px);
   }
@@ -196,9 +200,9 @@ button:hover {
   }
 }
 
-@media (min-width: 650px) {
+@media (min-width: 850px) {
   .search-form label {
-    flex-basis: 35%;
+    flex-basis: 33.5%;
     max-width: 100%;
   }
 }
