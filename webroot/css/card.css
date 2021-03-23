@@ -99,7 +99,6 @@ button {
 .person-name {
   font-weight: 500;
   font-size: 18px;
-  line-height: 43px;
   color: #000000;
 }
 
@@ -107,7 +106,6 @@ button {
 .days-remaining {
   font-weight: 500;
   font-size: 16px;
-  line-height: 28px;
   color: #5f6c7b;
 }
 
@@ -120,6 +118,10 @@ button {
 }
 
 @media (min-width: 300px) {
+  .data {
+    gap: 31px;
+  }
+
   .person-name {
     font-size: 24px;
   }

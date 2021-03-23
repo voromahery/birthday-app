@@ -16,8 +16,7 @@ label {
 
 .search-form,
 .buttons {
-  gap: 16px;
-  justify-content: space-between;
+  gap: 18px;
 }
 
 ::placeholder {
@@ -141,11 +140,6 @@ button:hover {
 .cancel-add:hover {
   color: #ffffff;
   background-color: #5f6c7b;
-}
-
-.edit-field {
-  width: 100%;
-  max-width: 90%;
 }
 
 .edit-field label {

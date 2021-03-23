@@ -221,10 +221,11 @@ async function editPopup(id) {
               findPers.firstName
             }">
         </label>
-        <label for="last-name">Last names</label>
+        <label for="last-name">Last names
             <input type="text" name="lastname" id="lastname" value="${
               findPers.lastName
             }">
+        </label>
         <label for="birthday">Birthday
             <input type="date" name="birthday" id="birthday" max="${dateMax}" value="${
     new Date(findPers.birthday).toISOString().split("T")[0]

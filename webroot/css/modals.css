@@ -17,15 +17,19 @@
   border: none;
   border-radius: 5px;
   background-color: #ffffff;
-  padding-bottom: 53px;
-  padding-top: 17px;
+  padding-left: 63.5px;
+  padding-right: 63.5px;
+  padding-top: 53.5px;
+  padding-bottom: 53.5px;
+  width: 100%;
+  max-width: 1079px;
 }
 
 .delete-card {
   margin: auto;
   text-align: center;
   border-radius: 5px;
-  max-width: 90%;
+  max-width: 1079px;
   padding: 17px;
   background-color: #ffffff;
 }
@@ -56,6 +60,7 @@
   line-height: 21px;
   color: #094067;
   margin-top: 16px;
+  max-width: 264px;
 }
 
 .clear {
@@ -72,20 +77,24 @@
 
 .add-wrapper {
   max-width: 365px;
-    align-self: center;
-    width: inherit;
+  align-self: center;
+  width: inherit;
+}
+
+.edit-field .person-name {
+  margin-bottom: calc(26px / 2);
 }
 
 @media (min-width: 300px) {
   .edit-field input {
     height: 50px;
   }
-  
-  .edit-field {
-    gap: 16px;
-  }
 
+  .edit-field,
   .delete-card div {
     gap: 16px;
+  }
+  .edit-field .person-name {
+    margin-bottom: 26px;
   }
 }
