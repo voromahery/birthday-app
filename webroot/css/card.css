@@ -60,7 +60,7 @@ button {
 
 .icons-container {
   align-items: flex-end;
-  margin-top: calc(38px / 2);
+  margin-top: calc(41px / 2);
 }
 
 .card,
@@ -93,7 +93,7 @@ button {
 }
 
 .days-remaining {
-  margin-bottom: calc(38px / 2);
+  margin-bottom: calc(41px / 2);
 }
 
 .person-name {
@@ -141,6 +141,14 @@ button {
     padding-bottom: 23px;
     padding-left: 43px;
     padding-right: 25px;
+  }
+
+  .days-remaining {
+    margin-bottom: 41px;
+  }
+
+  .icons-container {
+    margin-top: 41px;
   }
 }
 
