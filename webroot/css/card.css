@@ -1,6 +1,36 @@
+.data,
+.card,
+.wrapper,
+.birthday,
+.icons-container {
+  display: flex;
+}
+
+.edit,
+.card,
+.delete,
+.birthday,
+.edit:hover,
+.delete:hover,
+.card:hover,
+.birthday:hover {
+  transition: all ease-in 0.2s;
+}
+
+.card,
+.birthday,
+.wrapper {
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card,
+.birthday {
+  justify-content: space-between;
+}
+
 .data {
   gap: 16px;
-  display: flex;
   flex-direction: column;
 }
 
@@ -9,17 +39,7 @@
 }
 
 .wrapper {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
   gap: calc(39px / 2);
-}
-
-.icons-container,
-.card,
-.birthday {
-  display: flex;
-  justify-content: space-between;
 }
 
 .edit,
@@ -36,19 +56,15 @@ button {
 .edit:hover,
 .delete:hover {
   transform: scale(1.1);
-  transition: all ease-in 0.2s;
 }
 
 .icons-container {
   align-items: flex-end;
   margin-top: calc(38px / 2);
-  max-width: 90px;
 }
 
 .card,
 .birthday {
-  align-items: center;
-  flex-wrap: wrap;
   background-color: #ffffff;
   border-radius: 5px;
   padding-left: calc(43px / 4);
@@ -62,20 +78,8 @@ button {
   box-shadow: 2px 2px 7px black;
 }
 
-.card,
-.card:hover,
-.birthday,
-.birthday:hover {
-  transition: all ease-in 0.2s;
-}
-
 .rounded-circle:hover {
   box-shadow: 2px 2px 5px black;
-}
-
-.rounded-circle,
-.rounded-circle:hover {
-  transition: all ease-in 0.2s;
 }
 
 .birthday {
@@ -111,6 +115,10 @@ button {
   color: #ef4565;
 }
 
+.icons-container {
+  gap: 22px;
+}
+
 @media (min-width: 300px) {
   .person-name {
     font-size: 24px;
@@ -131,7 +139,7 @@ button {
   }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 650px) {
   .person-name {
     font-size: 36px;
   }
@@ -148,6 +156,6 @@ button {
   }
 
   .icons-container {
-    margin-left: auto;
+    justify-content: flex-end;
   }
 }

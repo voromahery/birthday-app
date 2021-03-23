@@ -128,7 +128,7 @@ figure {
   }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 650px) {
   body {
     padding-top: 64px;
     padding-bottom: 64px;
