@@ -68,7 +68,6 @@ async function fetchData() {
 fetchData();
 
 //////////////////////////////////////// EDIT A PERSON ///////////////////////////////////////////////////////
-
 async function addData(personData) {
   let currentYear = new Date().getFullYear();
   const dateNow = new Date();
@@ -139,7 +138,7 @@ async function addData(personData) {
         daysIndicator = `tomorrow`;
       }
       if (person.daysLeft === 0) {
-        dayLeft = `🎂🎂 Happy birthday ${person.firstName} 🎂🎂`;
+        dayLeft = `🎂🎂 Happy birthday ${person.firstName} ${person.lastName} 🎂🎂`;
         daysIndicator = `today`;
       }
       if (person.daysLeft > 1) {
@@ -156,7 +155,7 @@ async function addData(personData) {
               }-avatar" class="rounded-circle">
             </figure>
           <div>
-          <h3 class="person-name">${person.firstName}</h3>
+          <h3 class="person-name">${person.firstName} ${person.lastName}</h3>
                   <p class="birthdate">Turns <span class="person-age">${
                     person.age
                   }</span> ${daysIndicator}<p> 
@@ -332,7 +331,7 @@ async function deleteId(id) {
           <div class="clear-wrapper">
             <img src="./icons/clear.svg" class="clear" alt="clear-icon" />
           </div>
-            <h3 class="confirmation">Are you sure that you want to delete ${findPers.firstName}?</h3>
+            <h3 class="confirmation">Are you sure that you want to delete ${findPers.firstName} ${findPers.lastName}?</h3>
             <div class="buttons">
               <button class="delete-confirm">Yes</button>
               <button class="undelete">No</button>
