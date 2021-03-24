@@ -461,7 +461,7 @@ const filterData = () => {
   const searchByName = searchName.value.toLowerCase();
   const searchByMonth = searchMonth.value.toLowerCase();
   const filteredPeople = personData.filter((person) => {
-    return person.firstName.toLowerCase().includes(searchByName);
+    return person.firstName.toLowerCase().includes(searchByName) || person.lastName.toLowerCase().includes(searchByName);
   });
 
   const filterByMonth = filteredPeople.filter((person) => {
