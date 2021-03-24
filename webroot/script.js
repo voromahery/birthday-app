@@ -71,9 +71,7 @@ fetchData();
 
 async function addData(personData) {
   let currentYear = new Date().getFullYear();
-  const dateNow = Date.now();
-  const actualDate = new Date(Date.now());
-
+  const dateNow = new Date();
   const time = personData.map((person) => {
     const birthDateMonth = new Date(person.birthday).getMonth();
     const birthDateDay = new Date(person.birthday).getDate();
@@ -81,7 +79,7 @@ async function addData(personData) {
     const dateTime = new Date(`${date}`);
     const dateMiliseconds = dateTime.getTime();
     const dateDiff = dateMiliseconds - dateNow;
-    let daysToGo = Math.round(dateDiff / (1000 * 60 * 60 * 24));
+    let daysToGo = Math.ceil(dateDiff / (1000 * 60 * 60 * 24));
     if (daysToGo < 0) {
       daysToGo = daysToGo + 365;
     }
@@ -114,7 +112,7 @@ async function addData(personData) {
     } else {
       birthDate = `${arr[1]}<sup>th</sup>`;
     }
-    const ages = actualDate.getFullYear() - new Date(birthday).getFullYear();
+    const ages = dateNow.getFullYear() - new Date(birthday).getFullYear();
     const persons = {
       firstName: person.firstName,
       lastName: person.lastName,
