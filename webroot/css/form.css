@@ -92,6 +92,12 @@ button {
   line-height: 21px;
 }
 
+fieldset button {
+  max-width: 158px;
+  padding-left: calc(21px / 2);
+  padding-right: calc(16px / 2);
+}
+
 .delete-confirm,
 .save,
 .add-button {
@@ -158,6 +164,11 @@ button:hover {
     padding-bottom: 15px;
     padding-left: 18px;
     padding-right: 11px;
+  }
+
+  fieldset button {
+    padding-left: 21px;
+    padding-right: 16px;
   }
 
   .search-form {

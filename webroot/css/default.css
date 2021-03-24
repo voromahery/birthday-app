@@ -5,6 +5,12 @@ body {
   padding-bottom: calc(64px / 4);
 }
 
+*,
+body {
+  font-family: "Rubik", sans-serif;
+}
+
+
 main {
   padding-left: 12px;
   padding-right: 12px;
@@ -38,11 +44,6 @@ input[type="date"],
 ::-webkit-calendar-picker-indicator:hover,
 ::-webkit-calendar-picker-indicator {
   transition: all ease-in 0.2s;
-}
-
-*,
-body {
-  font-family: "Rubik";
 }
 
 ul {
