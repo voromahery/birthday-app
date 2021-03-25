@@ -14,6 +14,7 @@
 .delete-card {
   width: 100%;
   max-width: 70%;
+  max-height: fit-content;
   margin-left: auto;
   margin-right: auto;
   background-color: #ffffff;
