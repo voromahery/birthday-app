@@ -10,8 +10,8 @@ body {
   font-family: "Rubik", sans-serif;
 }
 
-
-main {
+main,
+header {
   padding-left: 12px;
   padding-right: 12px;
 }
