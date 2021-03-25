@@ -211,4 +211,8 @@ button:hover {
     flex-basis: 33.5%;
     max-width: 100%;
   }
+
+  .add-button {
+    flex-basis: 24%;
+  }
 }
