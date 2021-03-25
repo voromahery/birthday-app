@@ -12,9 +12,9 @@
 
 .edit-field,
 .delete-card {
-  width: 100%;
-  max-width: 70%;
-  max-height: fit-content;
+  width: 70%;
+  max-width: 1079px;
+  height: fit-content;
   margin-left: auto;
   margin-right: auto;
   background-color: #ffffff;
@@ -116,5 +116,12 @@
     padding-bottom: 53.5px;
     margin-top: 161px;
     margin-bottom: 112px;
+  }
+}
+
+@media (min-width: 850px) {
+  .edit-field,
+  .delete-card {
+    padding-bottom: 189px;
   }
 }
