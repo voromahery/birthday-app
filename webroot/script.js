@@ -103,13 +103,13 @@ async function addData(personData) {
 
     let birthDate = "";
     if (arr[1] == 1 || arr[1] == 21 || arr[1] == 31) {
-      birthDate = `${arr[1]}<sup>st</sup>`;
+      birthDate = `${arr[1]}st`;
     } else if (arr[1] == 2 || arr[1] == 22) {
-      birthDate = `${arr[1]}<sup>nd</sup>`;
+      birthDate = `${arr[1]}nd`;
     } else if (arr[1] == 3) {
-      birthDate = `${arr[1]}<sup>rd</sup>`;
+      birthDate = `${arr[1]}rd`;
     } else {
-      birthDate = `${arr[1]}<sup>th</sup>`;
+      birthDate = `${arr[1]}th`;
     }
     const ages = dateNow.getFullYear() - new Date(birthday).getFullYear();
     const persons = {
