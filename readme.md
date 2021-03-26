@@ -7,19 +7,24 @@
 ## Table of contents
 
 - [Overview](#overview)
-- [Built With](#built-with)
-- [Features](#features)
+- [Built with](#built-with)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
 
 ## [Overview](#overview)
-----
 
 ![screenshot](./images/birthday-app.png)
 
-## [Built With](#built-with)
-----
+## [Built with](#built-with)
 
 - [HTML5](https://html.spec.whatwg.org/)
 - [Vanilla Javascript](https://www.javascript.com/)
 - [CSS](https://www.w3.org/Style/CSS/)
+
+## [Acknowledgements](#acknowledgements)
+
+A responsive single page application.
+
+## [Contact](#contact)
+
+- [GitHub](https://github.com/voromahery)
