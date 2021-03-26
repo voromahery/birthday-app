@@ -10,6 +10,7 @@
 - [Built with](#built-with)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
+- [How to use](#how-to-use)
 
 ## [Overview](#overview)
 
@@ -23,7 +24,7 @@
 
 ## [Acknowledgements](#acknowledgements)
 
-A responsive single page application.
+A responsive CRUD (Create, Read, Update, Delete) application which is buit in order to record people's birthday.
 
 ## [Contact](#contact)
 
