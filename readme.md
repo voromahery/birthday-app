@@ -1,49 +1,25 @@
 # Birthday App
 
-## Structure of the project
+[**Demo**](https://birthday-app-daniel.netlify.app/) | [**Code**](https://github.com/voromahery/birthday-app)
 
-### 1- General
+---
 
-- Firstly, I grab all the elements that I needed from the html and the data  that contains the list of people from the json file.
+## Table of contents
 
-- Secondly, I created an empty array to store my data, then I added my data to local storage.
+- [Overview](#overview)
+- [Built With](#built-with)
+- [Features](#features)
+- [Contact](#contact)
+- [Acknowledgements](#acknowledgements)
 
-- After all of that, the data in people.json is fetched then added inside the empty array.
+## [Overview](#overview)
+----
 
-- In the fourth part, a function that contain all of the html structure for the data is created, then sorted all person by the day left until their birthday. That means, the one who has nearer birthday is the first then the on who has next, and so on.
+![screenshot](./images/birthday-app.png)
 
-- After that, the html that is created is added inside the table element that has been grabbed.
+## [Built With](#built-with)
+----
 
-### 2- For the delete
-
-- Firstly, `filter()` is used to filter the people that have different `id` to the target.
-
-- Secondly, popup that contains two buttons: **confirming** and **cancelling**, then added that html inside a container that we have grabbed.
-
-- The two buttons are grabbed by using `e.target.closest()`. If the **confirming** button is clicked, a person will be deleted and the popup will disappear. However, if **cancel** is clicked, the list will stay the same because nothing is deleted and the popup will also disappear.
-
-### 3- For edit
-
-- Firstly, `find()` is used to get the person wo has the same id as the target.
-
-- Secondly, form is created to edit each person. The same as delete popup, if the confirm or the cancel button is clicked, the form will immediately disappear, but for confirm, everything that is changed will appear on DOM. However, for the cancel, nothing will be changed.
-
-### 4- For adding
-
-- A form is created and then, pushed the value of that form in the empty array so that we can both store it in the local storage and display it on the DOM.
-
-## 5- For searching
-
-- I created a new input and select in the HTML then, I grabbed them to the Javascript.
-- After that, I filtered all the name that has the same character as the input value so that they return what is searched.
-
-## Any improvement
-
-
-## Most challenging part
-
-- Counting the day left of the person until the next birthday is the most challenging and also sorting it.
-
-## More explanation about a specific part
-
-- I need more explanation on how to use the `date-fns` because when I tried to use it, it throws an error.
+- [HTML5](https://html.spec.whatwg.org/)
+- [Vanilla Javascript](https://www.javascript.com/)
+- [CSS](https://www.w3.org/Style/CSS/)
