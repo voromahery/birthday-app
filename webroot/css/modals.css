@@ -32,6 +32,15 @@
   display: flex;
 }
 
+.clear:hover {
+  transform: scale(1.5);
+}
+
+.clear,
+.clear:hover {
+  transition: all ease-in 0.2s;
+}
+
 .edit-field {
   gap: 8px;
   border: none;
