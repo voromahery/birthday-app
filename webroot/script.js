@@ -112,7 +112,7 @@ async function addData(personData) {
     } else {
       birthDate = `${arr[1]}th`;
     }
-    
+
     const ages = dateToday.getFullYear() - new Date(birthday).getFullYear();
     const persons = {
       firstName: person.firstName,
