@@ -24,6 +24,7 @@
   padding-bottom: calc(53.5px / 2);
   margin-top: calc(161px / 2);
   margin-bottom: calc(112px / 2);
+  align-self: center;
 }
 
 .edit-field,
@@ -55,6 +56,11 @@
   border-radius: 5px;
   max-width: -webkit-fill-available;
   border: none;
+}
+
+.edit-field-wrapper {
+  max-width: 464px;
+  width: 100%;
 }
 
 .edit-field input,
