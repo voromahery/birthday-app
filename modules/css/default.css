@@ -1,0 +1,156 @@
+@font-face {
+  font-family: "myRubik";
+  src: url("../fonts/rubik-medium.woff2"), url("../fonts/rubik-medium.woff");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "myRubik";
+  src: url("../fonts/rubik-bold.woff2"), url("../fonts/rubik-bold.woff");
+  font-weight: 700;
+}
+
+body {
+  margin: auto;
+  background-color: #d8eefe;
+  padding-top: calc(64px / 4);
+  padding-bottom: calc(64px / 4);
+}
+
+*,
+body {
+  font-family: "Rubik", "myRubik", sans-serif;
+}
+
+main,
+header {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; /* Remove default arrow */
+  background-image: url("../icons/arrow.svg");
+  background-position-y: center;
+  background-position-x: 90%;
+  background-repeat: no-repeat;
+  padding-right: 40px;
+}
+
+select,
+input[type="date"],
+::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+::-webkit-calendar-picker-indicator {
+  color: inherit;
+}
+
+::-webkit-calendar-picker-indicator:hover {
+  transform: scale(1.1);
+}
+
+::-webkit-calendar-picker-indicator:hover,
+::-webkit-calendar-picker-indicator {
+  transition: all ease-in 0.2s;
+}
+
+
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+input {
+  padding-right: 10px;
+}
+
+input,
+select {
+  padding-left: 10px;
+}
+
+input,
+select,
+button {
+  outline: inherit;
+  outline: transparent;
+}
+
+.table,
+.form-container,
+h1 {
+  max-width: 779px;
+  margin: auto;
+}
+
+h1,
+.edit-field .person-name,
+.confirmation {
+  font-weight: bold;
+  font-size: 30px;
+  color: #094067;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+}
+
+img,
+input,
+select {
+  width: 100%;
+}
+
+img {
+  border-radius: 5px;
+  max-width: 92px;
+}
+
+figure {
+  margin: 0;
+}
+
+@media (min-width: 300px) {
+  body {
+    padding-top: calc(64px / 2);
+    padding-bottom: calc(64px / 2);
+  }
+
+  input,
+  select {
+    padding-left: 20px;
+  }
+
+  input {
+    padding-right: 20px;
+  }
+
+  select {
+    padding-right: 60px;
+  }
+
+  h1,
+  .edit-field .person-name,
+  .confirmation {
+    font-size: 42px;
+  }
+}
+
+@media (min-width: 650px) {
+  body {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  h1,
+  .person-name,
+  .confirmation {
+    font-size: 64px;
+  }
+}

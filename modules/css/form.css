@@ -1,0 +1,218 @@
+.form-container {
+  margin-top: 42px;
+  margin-bottom: 47px;
+}
+
+.search-form,
+.buttons,
+label {
+  display: flex;
+}
+
+label {
+  flex-direction: column;
+  gap: 8px;
+}
+
+.search-form,
+.buttons {
+  gap: 18px;
+}
+
+::placeholder {
+  color: #5f6c7b;
+  opacity: 1;
+}
+
+::placeholder,
+select,
+.edit-form input,
+.add-new-person input {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+::-moz-placeholder {
+  font-weight: 500;
+  font-size: 16px;
+  color: #5f6c7b;
+  opacity: 1;
+}
+
+.edit-form input,
+.add-new-person input {
+  color: #094067;
+}
+
+::placeholder,
+select {
+  color: #5f6c7b;
+}
+
+.search-form {
+  width: 100%;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.search-form select,
+.search-form input,
+.save {
+  background-color: #fffffe;
+  border-radius: 5px;
+  border: none;
+}
+
+.search-form input,
+.search-form select {
+  height: 40px;
+}
+
+input {
+  width: calc(100% - 20px);
+}
+
+.search-form label {
+  color: #094067;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  max-width: 380px;
+  gap: 13px;
+}
+
+button {
+  font-size: 14px;
+  padding-top: calc(15px / 2);
+  padding-bottom: calc(15px / 2);
+  padding-left: calc(18px / 2);
+  padding-right: calc(11px / 2);
+  font-weight: 500;
+  line-height: 21px;
+}
+
+fieldset button {
+  max-width: 158px;
+  padding-left: calc(21px / 2);
+  padding-right: calc(16px / 2);
+}
+
+.delete-confirm,
+.save,
+.add-button {
+  background: #ef4565;
+  color: #fffffe;
+}
+
+button,
+button:hover {
+  transition: all ease-in 0.2s;
+}
+
+.delete-confirm:hover,
+.save:hover,
+.add-button:hover {
+  background-color: #a4122b;
+}
+
+.save,
+.cancel,
+.undelete,
+.delete-confirm,
+.cancel-add {
+  width: 100%;
+  margin-top: calc(29px / 2);
+}
+
+.undelete,
+.cancel,
+.cancel-add {
+  color: #5f6c7b;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.undelete:hover,
+.cancel:hover,
+.cancel-add:hover,
+.undelete,
+.cancel,
+.cancel-add {
+  border: 2px solid #5f6c7b;
+}
+
+.undelete:hover,
+.cancel:hover,
+.cancel-add:hover {
+  color: #ffffff;
+  background-color: #5f6c7b;
+}
+
+.edit-field label {
+  display: flex;
+  flex-direction: column;
+}
+
+.person.name {
+  color: #094067;
+}
+
+@media (min-width: 300px) {
+  button {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 18px;
+    padding-right: 11px;
+  }
+
+  fieldset button {
+    padding-left: 21px;
+    padding-right: 16px;
+  }
+
+  .search-form {
+    gap: 35px;
+  }
+
+  .search-form label {
+    flex-basis: calc(100% - 35px);
+  }
+
+  input {
+    width: calc(100% - 40px);
+  }
+
+  ::placeholder,
+  select,
+  input,
+  button,
+  .search-form label {
+    font-size: 18px;
+  }
+
+  .search-form select,
+  .search-form input {
+    height: 50px;
+  }
+
+  .save,
+  .cancel,
+  .undelete,
+  .delete-confirm,
+  .cancel-add {
+    max-height: fit-content;
+    margin-top: 29px;
+  }
+}
+
+@media (min-width: 850px) {
+  .search-form label {
+    flex-basis: 33.5%;
+    max-width: 100%;
+  }
+
+  .add-button {
+    flex-basis: 24%;
+  }
+}
