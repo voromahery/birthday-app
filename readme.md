@@ -28,4 +28,6 @@ A responsive CRUD (Create, Read, Update, Delete) application which is buit in or
 
 ## [Contact](#contact)
 
+- Email: daniel.her@onja.org
+- Phone: +2613791472
 - [GitHub](https://github.com/voromahery)
