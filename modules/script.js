@@ -1,20 +1,21 @@
 import { addData } from "./modules/displayPeople.js";
 import { deletePers } from "./modules/deletePerson.js";
 import { editPers } from "./modules/editPopup.js";
+import { filterData } from "./modules/search.js";
 import {
   table,
   searchName,
   searchMonth,
-  body,
-  addButton,
+  // body,
+  // addButton,
 } from "./modules/elements.js";
 import { newForm } from "./modules/add.js";
 const myData = "./people.json";
 export let personData = [];
+
 ////////////////////////////////LOCAL STORAGE//////////////////////////////////////////////////
 // Add to local storage
 async function addToLocalStorage() {
-  // Change the array of object into string in order to display it on local storage
   localStorage.setItem("personData", JSON.stringify(personData));
 }
 
@@ -51,29 +52,6 @@ async function fetchData() {
   return personData;
 }
 
-fetchData();
-//////////////////////// SEARCH BAR ///////////////////////////////////////////////
-
-const filterData = () => {
-  const searchByName = searchName.value.toLowerCase();
-  const searchByMonth = searchMonth.value.toLowerCase();
-  const filteredPeople = personData.filter((person) => {
-    return (
-      person.firstName.toLowerCase().includes(searchByName) ||
-      person.lastName.toLowerCase().includes(searchByName)
-    );
-  });
-
-  const filterByMonth = filteredPeople.filter((person) => {
-    const month = new Date(person.birthday).toLocaleString("default", {
-      month: "long",
-    });
-    return month.toLowerCase().includes(searchByMonth);
-  });
-  addData(filterByMonth);
-};
-
-// Event listener
 searchName.addEventListener("keyup", filterData);
 searchMonth.addEventListener("change", filterData);
 
@@ -85,3 +63,4 @@ table.addEventListener("updateList", deletePers);
 table.addEventListener("updateList", editPers);
 
 restoreData();
+fetchData();
