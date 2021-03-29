@@ -1,9 +1,17 @@
-import { addButton } from "./elements.js";
+import { addButton, body, table } from "./elements.js";
+import { addData } from './displayPeople.js';
+import { removeAddPopup } from "./addPopup.js";
+import {
+  hideScrollBar,
+  showScrollBar,
+  personData,
+  dateMax,
+} from "../script.js";
+export const newForm = document.createElement("form");
 
 // Add a new person
 addButton.addEventListener("click", (e) => {
   // Create an element to store an html
-  const newForm = document.createElement("form");
   newForm.classList.add("add-new-person");
   const newFormHtml = `
        <fieldset class="edit-field">
@@ -30,7 +38,7 @@ addButton.addEventListener("click", (e) => {
        `;
   newForm.innerHTML = newFormHtml;
   // Add to the body
-  document.body.appendChild(newForm);
+  body.appendChild(newForm);
   newForm.classList.add("open");
   hideScrollBar();
 

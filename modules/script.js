@@ -3,11 +3,12 @@ import { deletePers } from "./modules/deletePerson.js";
 import { editPers } from "./modules/editPopup.js";
 import {
   table,
-  addButton,
   searchName,
   searchMonth,
   body,
+  addButton,
 } from "./modules/elements.js";
+import { newForm } from "./modules/add.js";
 
 // Grab all necessary elements and files
 const myData = "./people.json";
@@ -72,23 +73,6 @@ async function fetchData() {
 }
 
 fetchData();
-
-//////////////////////////////////////// EDIT A PERSON ///////////////////////////////////////////////////////
-
-
-/////////////////////////////////////////// ADD A NEW PERSON /////////////////////////////////////
-
-// Remove popup
-async function removeAddPopup(newForm) {
-  newForm.classList.remove("open");
-
-  // Delete the popup right after
-  newForm.remove();
-
-  // Remove it from javascript memory
-  newForm = null;
-}
-
 //////////////////////// SEARCH BAR ///////////////////////////////////////////////
 
 const filterData = () => {
