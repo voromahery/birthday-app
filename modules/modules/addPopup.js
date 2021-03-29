@@ -1,4 +1,3 @@
-
 export function removeAddPopup(newForm) {
   newForm.classList.remove("open");
 

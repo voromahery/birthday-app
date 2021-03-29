@@ -1,12 +1,8 @@
+import { personData } from "../script.js";
 import { addButton, body, table } from "./elements.js";
-import { addData } from './displayPeople.js';
+import { addData } from "./displayPeople.js";
 import { removeAddPopup } from "./addPopup.js";
-import {
-  hideScrollBar,
-  showScrollBar,
-  personData,
-  dateMax,
-} from "../script.js";
+import { dateMax, hideScrollBar, showScrollBar } from "./utils.js";
 export const newForm = document.createElement("form");
 
 // Add a new person

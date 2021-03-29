@@ -1,7 +1,8 @@
-import { personData, hideScrollBar, showScrollBar } from "../script.js";
-import { removeDeletePopup } from './deletePopup.js';
-import { table } from "./elements.js";
-import { addData } from './displayPeople.js';
+import { personData } from "../script.js";
+import { hideScrollBar, showScrollBar} from "./utils.js";
+import { removeDeletePopup } from "./deletePopup.js";
+import { table, body } from "./elements.js";
+import { addData } from "./displayPeople.js";
 
 export function deleteId(id) {
   const findPers = personData.find((person) => person.id == id);
@@ -26,7 +27,7 @@ export function deleteId(id) {
   container.innerHTML = html;
 
   // Add to the body
-  document.body.appendChild(container);
+  body.appendChild(container);
   container.classList.add("open");
   hideScrollBar();
 

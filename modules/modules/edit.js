@@ -1,12 +1,8 @@
 import { addData } from "./displayPeople.js";
 import { removeEditPopup } from "./editPopup.js";
 import { table, body } from "./elements.js";
-import {
-  personData,
-  dateMax,
-  hideScrollBar,
-  showScrollBar,
-} from "./../script.js";
+import { dateMax, hideScrollBar, showScrollBar } from "./utils.js";
+import { personData } from "../script.js";
 
 export function editPopup(id) {
   // Find the person by his/her id

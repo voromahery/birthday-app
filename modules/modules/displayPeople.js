@@ -1,4 +1,4 @@
-import { dateToday } from "../script.js";
+import { dateToday } from "./utils.js";
 import { table } from "./elements.js";
 
 export function addData(personData) {
