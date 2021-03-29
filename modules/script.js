@@ -1,19 +1,14 @@
-import { addData } from "./modules/displayPeople.js";
-import { deletePers } from "./modules/deletePerson.js";
-import { editPers } from "./modules/editPopup.js";
-import { filterData } from "./modules/search.js";
-import {
-  table,
-  searchName,
-  searchMonth,
-  // body,
-  // addButton,
-} from "./modules/elements.js";
+import { hideScrollBar, showScrollBar} from "./modules/utils.js";
+import { removeDeletePopup } from "./modules/deletePopup.js";
 import { newForm } from "./modules/add.js";
+import { filterData } from "./modules/search.js";
+import { editPers } from "./modules/editPopup.js";
+import { addData } from "./modules/displayPeople.js";
+import { table, body } from "./modules/elements.js";
+
 const myData = "./people.json";
 export let personData = [];
 
-////////////////////////////////LOCAL STORAGE//////////////////////////////////////////////////
 // Add to local storage
 async function addToLocalStorage() {
   localStorage.setItem("personData", JSON.stringify(personData));
@@ -52,12 +47,77 @@ async function fetchData() {
   return personData;
 }
 
-searchName.addEventListener("keyup", filterData);
-searchMonth.addEventListener("change", filterData);
+export function deleteId(id) {
+  const findPers = personData.find((person) => person.id == id);
+
+  // Create an element to insert the card
+  const container = document.createElement("div");
+  container.classList.add("container");
+
+  const html = `
+          <div class="delete-card">
+            <div class="clear-wrapper">
+              <img src="./icons/clear.svg" class="clear" alt="clear-icon" />
+            </div>
+              <h3 class="confirmation">Are you sure that you want to delete ${findPers.firstName} ${findPers.lastName}?</h3>
+              <div class="buttons">
+                <button class="delete-confirm">Yes</button>
+                <button class="undelete">No</button>
+              </div>
+          </div>
+          `;
+
+  container.innerHTML = html;
+
+  // Add to the body
+  body.appendChild(container);
+  container.classList.add("open");
+  hideScrollBar();
+
+  function deleteConfirmation(e) {
+    // If yes is clicked.
+    const confirmButton = e.target.matches(".delete-confirm");
+    if (confirmButton) {
+      const personId = personData.filter((person) => person.id != id);
+      personData = personId;
+      addData(personId);
+      removeDeletePopup(container);
+      table.dispatchEvent(new CustomEvent("updateList"));
+      showScrollBar();
+    }
+
+    // If no and the empty space are clicked
+    const remove = e.target.matches(".container");
+    const cancelButton = e.target.matches(".undelete");
+    const clearIcon = e.target.closest(".clear");
+
+    if (cancelButton || remove || clearIcon) {
+      removeDeletePopup(container);
+      table.dispatchEvent(new CustomEvent("updateList"));
+      showScrollBar();
+    }
+  }
+
+  // Event for the button Yes and No
+  window.addEventListener("click", deleteConfirmation);
+  // table.addEventListener('updateList', deleteConfirmation);
+  table.dispatchEvent(new CustomEvent("updateList"));
+}
+
+export function deletePers(e) {
+  // Grab the delete button
+  const deleteButton = e.target.closest(".delete");
+
+  if (deleteButton) {
+    const buttonId = deleteButton.id;
+    deleteId(buttonId);
+    table.dispatchEvent(new CustomEvent("updateList"));
+  }
+}
+
 
 table.addEventListener("click", deletePers);
 table.addEventListener("click", editPers);
-
 table.addEventListener("updateList", addToLocalStorage);
 table.addEventListener("updateList", deletePers);
 table.addEventListener("updateList", editPers);

@@ -20,3 +20,7 @@ export const filterData = () => {
   });
   addData(filterByMonth);
 };
+
+
+searchName.addEventListener("keyup", filterData);
+searchMonth.addEventListener("change", filterData);
